@@ -50,8 +50,8 @@
 /* ==================== TEMA OSCURO ==================== */
 .dark {
     /* Sidebar */
-    --sidebar-bg: #1f2937;
-    --sidebar-border: #374151;
+    --sidebar-bg: #1e293b;
+    --sidebar-border: #4b5563;
     --sidebar-text: #d1d5db;
     --sidebar-text-hover: #06b6d4;
     --sidebar-bg-hover: #374151;
@@ -78,4 +78,117 @@
     /* Botón activo */
     --btn-active-bg: var(--color-ug-blue);
     --btn-active-text: #ffffff;
+}
+
+/* ==================== ESTILOS GLOBALES PRIMEREACT DARK MODE ==================== */
+.dark .p-card {
+    background-color: #1f2937 !important;
+    border-color: #4b5563 !important;
+    color: #f3f4f6 !important;
+}
+
+.dark .p-card .p-card-title {
+    color: #f3f4f6 !important;
+    font-weight: 600 !important;
+}
+
+.dark .p-card .p-card-subtitle {
+    color: #d1d5db !important;
+}
+
+.dark .p-card .p-card-content {
+    color: #f3f4f6 !important;
+    background-color: #1f2937 !important;
+}
+
+.dark .p-card .p-card-body {
+    background-color: #1f2937 !important;
+}
+
+/* Textos en modo oscuro */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f3f4f6 !important;
+}
+
+.dark p {
+    color: #d1d5db;
+}
+
+/* Mejorar contraste de labels y textos secundarios */
+.dark .text-gray-400 {
+    color: #d1d5db !important;
+}
+
+.dark .text-gray-500 {
+    color: #e5e7eb !important;
+}
+
+.dark .text-gray-600 {
+    color: #f3f4f6 !important;
+}
+
+/* ==================== PERSONALIZACIÓN DE SCROLLBAR ==================== */
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #005da4 #f4f7f9;
+}
+
+.dark * {
+    scrollbar-color: #06b6d4 #1f2937;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f7f9;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #005da4;
+    border-radius: 10px;
+    border: 2px solid #f4f7f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #004a82;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #003d6b;
+}
+
+/* Scrollbar en modo oscuro */
+.dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #06b6d4;
+    border-radius: 10px;
+    border: 2px solid #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #0891b2;
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+    background: #0e7490;
+}
+
+/* Scrollbar horizontal */
+::-webkit-scrollbar-corner {
+    background: #f4f7f9;
+}
+
+.dark ::-webkit-scrollbar-corner {
+    background: #1f2937;
 }

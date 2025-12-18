@@ -65,7 +65,7 @@ export const Sidebar = ({
                 transform transition-all duration-300 ease-in-out
                 ${isMobileMenuOpen ? 'translate-x-0 w-80 sm:w-96' : '-translate-x-full w-0 lg:translate-x-0'}
                 ${isCollapsed ? 'lg:w-20' : 'lg:w-80'}
-                ${isDarkMode ? 'bg-gray-800 border-r border-gray-700' : 'bg-white border-r border-gray-200'}
+                ${isDarkMode ? 'bg-[#1e293b] border-r border-gray-600' : 'bg-white border-r border-gray-200'}
             `}
                 style={{ overflowY: 'auto', overflowX: 'hidden' }}
             >

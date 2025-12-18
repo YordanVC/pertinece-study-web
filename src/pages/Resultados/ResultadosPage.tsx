@@ -36,8 +36,8 @@ export const ResultadosPage = () => {
         warning: isDarkMode ? '#f59e0b' : '#d97706', // amber-500 / amber-600
         danger: isDarkMode ? '#ef4444' : '#dc2626', // red-500 / red-600
         background: isDarkMode ? '#1f2937' : '#ffffff', // gray-800 / white
-        text: isDarkMode ? '#e5e7eb' : '#374151', // gray-200 / gray-700
-        border: isDarkMode ? '#374151' : '#e5e7eb' // gray-700 / gray-200
+        text: isDarkMode ? '#f3f4f6' : '#374151', // gray-100 / gray-700 - MÁS CLARO
+        border: isDarkMode ? '#4b5563' : '#e5e7eb' // gray-600 / gray-200 - MÁS VISIBLE
     };
 
     // Datos para el gráfico de dona (Estado de encuestas)
@@ -106,19 +106,40 @@ export const ResultadosPage = () => {
                 labels: {
                     color: colors.text,
                     font: {
-                        family: 'Inter, system-ui, sans-serif'
-                    }
+                        family: 'Inter, system-ui, sans-serif',
+                        size: 13,
+                        weight: '500'
+                    },
+                    padding: 12
                 }
             }
         },
         scales: {
             x: {
-                ticks: { color: colors.text },
-                grid: { color: colors.border }
+                ticks: {
+                    color: colors.text,
+                    font: {
+                        size: 12,
+                        weight: '500'
+                    }
+                },
+                grid: {
+                    color: colors.border,
+                    lineWidth: 1
+                }
             },
             y: {
-                ticks: { color: colors.text },
-                grid: { color: colors.border }
+                ticks: {
+                    color: colors.text,
+                    font: {
+                        size: 12,
+                        weight: '500'
+                    }
+                },
+                grid: {
+                    color: colors.border,
+                    lineWidth: 1
+                }
             }
         }
     };
@@ -132,8 +153,13 @@ export const ResultadosPage = () => {
                 labels: {
                     color: colors.text,
                     font: {
-                        family: 'Inter, system-ui, sans-serif'
-                    }
+                        family: 'Inter, system-ui, sans-serif',
+                        size: 13,
+                        weight: '500'
+                    },
+                    padding: 15,
+                    usePointStyle: true,
+                    pointStyle: 'circle'
                 }
             }
         }
@@ -144,17 +170,17 @@ export const ResultadosPage = () => {
             {/* Título */}
             <div className={`${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'}`}>
                 <h1 className="text-3xl font-bold">Dashboard de Resultados</h1>
-                <p className={`mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className="mt-2 text-gray-600">
                     Visualización de datos y estadísticas de encuestas de pertinencia
                 </p>
             </div>
 
             {/* Tarjetas de estadísticas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Card className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                <Card className="shadow-lg">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Total Encuestas</p>
+                            <p className="text-sm text-gray-600">Total Encuestas</p>
                             <h3 className={`text-3xl font-bold mt-2 ${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'}`}>328</h3>
                         </div>
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-cyan-400/20' : 'bg-ug-blue/10'}`}>
@@ -163,10 +189,10 @@ export const ResultadosPage = () => {
                     </div>
                 </Card>
 
-                <Card className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                <Card className="shadow-lg">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Completadas</p>
+                            <p className="text-sm text-gray-600">Completadas</p>
                             <h3 className="text-3xl font-bold mt-2 text-emerald-500">245</h3>
                         </div>
                         <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/20">
@@ -175,10 +201,10 @@ export const ResultadosPage = () => {
                     </div>
                 </Card>
 
-                <Card className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                <Card className="shadow-lg">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>En Progreso</p>
+                            <p className="text-sm text-gray-600">En Progreso</p>
                             <h3 className="text-3xl font-bold mt-2 text-amber-500">58</h3>
                         </div>
                         <div className="w-12 h-12 rounded-full flex items-center justify-center bg-amber-500/20">
@@ -187,10 +213,10 @@ export const ResultadosPage = () => {
                     </div>
                 </Card>
 
-                <Card className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+                <Card className="shadow-lg">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Participación</p>
+                            <p className="text-sm text-gray-600">Participación</p>
                             <h3 className={`text-3xl font-bold mt-2 ${isDarkMode ? 'text-purple-400' : 'text-indigo-600'}`}>75%</h3>
                         </div>
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-purple-400/20' : 'bg-indigo-600/10'}`}>
@@ -205,7 +231,7 @@ export const ResultadosPage = () => {
                 {/* Gráfico de Dona */}
                 <Card
                     title="Estado de Encuestas"
-                    className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-200' : 'bg-white border-gray-200'}`}
+                    className="shadow-lg"
                 >
                     <div className="h-64">
                         <Doughnut data={doughnutData} options={doughnutOptions} />
@@ -215,7 +241,7 @@ export const ResultadosPage = () => {
                 {/* Gráfico de Barras */}
                 <Card
                     title="Encuestas por Carrera"
-                    className={`lg:col-span-2 shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-200' : 'bg-white border-gray-200'}`}
+                    className="lg:col-span-2 shadow-lg"
                 >
                     <div className="h-64">
                         <Bar data={barData} options={chartOptions} />
@@ -226,7 +252,7 @@ export const ResultadosPage = () => {
             {/* Gráfico de Líneas */}
             <Card
                 title="Tendencia Mensual"
-                className={`shadow-lg ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-200' : 'bg-white border-gray-200'}`}
+                className="shadow-lg"
             >
                 <div className="h-80">
                     <Line data={lineData} options={chartOptions} />
