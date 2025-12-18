@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'primereact/button';
 import Lottie from 'lottie-react';
 import animationData from '../../assets/animations/404-notFound.json';
 import './NotFoundPage.css';
+import { Button } from '../../components/Button/Button';
 
 export const NotFoundPage = () => {
     const navigate = useNavigate();
@@ -36,27 +36,19 @@ export const NotFoundPage = () => {
                 </div>
 
                 {/* Botones de acción */}
-                <div className="error-actions">
+                <div className="error-actions h-15">
                     <Button
-                        label="Volver al inicio"
+                        variant="primary"
                         icon="pi pi-home"
                         onClick={() => navigate('/')}
                         className="p-button-lg"
-                        style={{
-                            backgroundColor: 'var(--color-ug-blue)',
-                            borderColor: 'var(--color-ug-blue)',
-                        }}
-                    />
+                    >Volver al inicio</Button>
                     <Button
-                        label="Ir atrás"
+                        variant="secondary"
                         icon="pi pi-arrow-left"
                         onClick={() => navigate(-1)}
                         className="p-button-lg p-button-outlined"
-                        style={{
-                            color: 'var(--color-ug-blue)',
-                            borderColor: 'var(--color-ug-blue)',
-                        }}
-                    />
+                    >Volver atrás</Button>
                 </div>
 
                 {/* Información adicional */}
