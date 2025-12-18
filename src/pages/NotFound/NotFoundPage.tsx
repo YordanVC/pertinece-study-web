@@ -47,7 +47,7 @@ export const NotFoundPage = () => {
                         variant="secondary"
                         icon="pi pi-arrow-left"
                         onClick={() => navigate(-1)}
-                        className="p-button-lg p-button-outlined"
+                        className="p-button-lg bg-white"
                     >Volver atrás</Button>
                 </div>
 
