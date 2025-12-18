@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@theme {
+  --font-family-sans: 'Poppins', sans-serif;
+  --color-ug-blue: #005da4;
+  --color-ug-blue-dark: #004a82;
+  --color-ug-gray: #f4f7f9;
+}
+
+@source "../node_modules/primereact";
+@source "./src";
+
+/* ==================== TEMA CLARO (por defecto) ==================== */
+:root {
+    /* Colores primarios */
+    --primary-color: var(--color-ug-blue);
+    
+    /* Sidebar */
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e5e7eb;
+    --sidebar-text: #374151;
+    --sidebar-text-hover: var(--color-ug-blue);
+    --sidebar-bg-hover: var(--color-ug-gray);
+    --sidebar-logo-bg: transparent;
+    
+    /* Header */
+    --header-bg: #ffffff;
+    --header-border: #e5e7eb;
+    --header-text: var(--color-ug-blue);
+    
+    /* Footer */
+    --footer-bg: #ffffff;
+    --footer-border: #e5e7eb;
+    --footer-text: #6b7280;
+    --footer-icon-bg: var(--color-ug-gray);
+    --footer-icon-text: var(--color-ug-blue);
+    --footer-icon-bg-hover: var(--color-ug-blue);
+    --footer-icon-text-hover: #ffffff;
+    
+    /* Content */
+    --content-bg: var(--color-ug-gray);
+    --content-overlay: rgba(255, 255, 255, 0.4);
+    
+    /* Botón activo */
+    --btn-active-bg: var(--color-ug-blue);
+    --btn-active-text: #ffffff;
+}
+
+/* ==================== TEMA OSCURO ==================== */
+.dark {
+    /* Sidebar */
+    --sidebar-bg: #1f2937;
+    --sidebar-border: #374151;
+    --sidebar-text: #d1d5db;
+    --sidebar-text-hover: #06b6d4;
+    --sidebar-bg-hover: #374151;
+    --sidebar-logo-bg: #ffffff;
+    
+    /* Header */
+    --header-bg: #1f2937;
+    --header-border: #374151;
+    --header-text: #06b6d4;
+    
+    /* Footer */
+    --footer-bg: #1f2937;
+    --footer-border: #374151;
+    --footer-text: #9ca3af;
+    --footer-icon-bg: #374151;
+    --footer-icon-text: #06b6d4;
+    --footer-icon-bg-hover: #06b6d4;
+    --footer-icon-text-hover: #111827;
+    
+    /* Content */
+    --content-bg: #111827;
+    --content-overlay: rgba(17, 24, 39, 0.7);
+    
+    /* Botón activo */
+    --btn-active-bg: var(--color-ug-blue);
+    --btn-active-text: #ffffff;
+}
