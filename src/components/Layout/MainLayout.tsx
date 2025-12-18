@@ -38,7 +38,7 @@ export const MainLayout = () => {
                 onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
                 isDarkMode={isDarkMode}
             />
-            <main className="flex-1 flex flex-col w-full lg:w-auto">
+            <main className="flex-1 flex flex-col w-full">
                 <header className={`h-16 border-b flex items-center justify-between px-4 lg:px-8 shadow-sm transition-colors duration-300 ${isDarkMode
                     ? 'bg-gray-800 border-gray-700'
                     : 'bg-white border-gray-200'

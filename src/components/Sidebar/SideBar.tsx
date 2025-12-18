@@ -33,7 +33,7 @@ export const Sidebar = ({
             {/* Overlay para móvil */}
             {isMobileMenuOpen && (
                 <div
-                    className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity"
+                    className="lg:hidden fixed inset-0 bg-transparent z-40 transition-opacity"
                     onClick={onMobileMenuClose}
                 ></div>
             )}
@@ -43,8 +43,8 @@ export const Sidebar = ({
                 fixed lg:static inset-y-0 left-0 z-40
                 h-screen flex flex-col relative
                 transform transition-all duration-300 ease-in-out
-                ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-                ${isCollapsed ? 'lg:w-24' : 'w-64 lg:w-72'}
+                ${isMobileMenuOpen ? 'translate-x-0 w-64' : '-translate-x-full w-0 lg:translate-x-0'}
+                ${isCollapsed ? 'lg:w-24' : 'lg:w-72'}
                 ${isDarkMode ? 'bg-gray-800 border-r border-gray-700' : 'bg-white border-r border-gray-200'}
             `}>
                 {/* Botón de colapsar/expandir para desktop */}
@@ -63,7 +63,7 @@ export const Sidebar = ({
 
                 <div className={`p-6 flex justify-center items-center transition-all duration-300 ${isCollapsed ? 'lg:p-3' : ''}`}>
                     {isCollapsed ? (
-                        <div className={`w-16 h-16 hidden lg:flex items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
+                        <div className={`w-16 h-16 flex lg:flex items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
                             }`}>
                             <img
                                 src={ugLettersOnly}
@@ -73,15 +73,28 @@ export const Sidebar = ({
                             />
                         </div>
                     ) : (
-                        <div className={`flex items-center justify-center transition-all duration-300 ${isDarkMode ? 'bg-gray-700/30 px-4 py-2 rounded-lg' : 'bg-transparent'
-                            }`}>
-                            <img
-                                src={logoSrc}
-                                alt={logoAlt}
-                                className={`h-12 transition-all duration-300 ${isDarkMode ? 'brightness-125 contrast-110' : ''
-                                    }`}
-                            />
-                        </div>
+                        <>
+                            {/* Logo pequeño para mobile */}
+                            <div className={`w-16 h-16 flex lg:hidden items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
+                                }`}>
+                                <img
+                                    src={ugLettersOnly}
+                                    alt="UG"
+                                    className={`w-12 h-12 transition-all duration-300 ${isDarkMode ? 'brightness-150 contrast-125' : ''
+                                        }`}
+                                />
+                            </div>
+                            {/* Logo completo para desktop */}
+                            <div className={`hidden lg:flex items-center justify-center transition-all duration-300 ${isDarkMode ? 'bg-gray-700/30 px-4 py-2 rounded-lg' : 'bg-transparent'
+                                }`}>
+                                <img
+                                    src={logoSrc}
+                                    alt={logoAlt}
+                                    className={`h-12 transition-all duration-300 ${isDarkMode ? 'brightness-125 contrast-110' : ''
+                                        }`}
+                                />
+                            </div>
+                        </>
                     )}
                 </div>
                 <nav className="flex-1 px-4 space-y-2">
