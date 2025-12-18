@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
+import Lottie from 'lottie-react';
+import animationData from '../../assets/animations/404-notFound.json';
 import './NotFoundPage.css';
 
 export const NotFoundPage = () => {
@@ -8,11 +10,13 @@ export const NotFoundPage = () => {
     return (
         <div className="not-found-container">
             <div className="not-found-content">
-                {/* Animación del 404 */}
-                <div className="error-code">
-                    <span className="digit digit-1">4</span>
-                    <span className="digit digit-0">0</span>
-                    <span className="digit digit-2">4</span>
+                {/* Animación Lottie */}
+                <div className="error-illustration">
+                    <Lottie
+                        animationData={animationData}
+                        loop={true}
+                        className="lottie-animation"
+                    />
                 </div>
 
                 {/* Círculos decorativos animados */}

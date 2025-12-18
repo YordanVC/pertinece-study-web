@@ -25,47 +25,197 @@
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* ==================== ANIMACIÓN DEL CÓDIGO 404 ==================== */
-.error-code {
+/* ==================== ILUSTRACIÓN ANIMADA ==================== */
+.error-illustration {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     margin-bottom: 2rem;
     perspective: 1000px;
 }
 
-.digit {
-    font-size: 10rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--color-ug-blue) 0%, var(--color-ug-blue-dark) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 10px 30px rgba(0, 93, 164, 0.3);
-    animation: bounce 2s ease-in-out infinite;
-    display: inline-block;
+.lottie-animation,
+.lost-illustration {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 93, 164, 0.15));
+    animation: fadeInScale 1s ease-out;
 }
 
-.dark .digit {
-    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+.dark .lottie-animation,
+.dark .lost-illustration {
+    filter: drop-shadow(0 10px 30px rgba(6, 182, 212, 0.25));
 }
 
-.digit-1 {
+/* Animación del astronauta - flotando */
+.astronaut {
+    animation: float 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-15px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    75% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Animación de los brazos */
+.arm-left {
+    animation: armFloat 4s ease-in-out infinite;
+    transform-origin: 210px 200px;
+}
+
+.arm-right {
+    animation: armFloat 4s ease-in-out infinite 0.5s;
+    transform-origin: 290px 200px;
+}
+
+@keyframes armFloat {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Animación del planeta - rotación */
+.planet {
+    animation: planetRotate 20s linear infinite;
+    transform-origin: 250px 320px;
+}
+
+@keyframes planetRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animación del anillo del planeta */
+.planet-ring {
+    animation: ringPulse 3s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scaleX(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scaleX(1.1);
+    }
+}
+
+/* Animación de las estrellas - parpadeo */
+.star {
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.star-1 {
     animation-delay: 0s;
 }
 
-.digit-0 {
-    animation-delay: 0.2s;
-    transform: scale(1.2);
+.star-2 {
+    animation-delay: 0.5s;
 }
 
-.digit-2 {
-    animation-delay: 0.4s;
+.star-3 {
+    animation-delay: 1s;
+}
+
+.star-4 {
+    animation-delay: 1.5s;
+}
+
+.star-5 {
+    animation-delay: 2s;
+}
+
+.star-6 {
+    animation-delay: 2.5s;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Animación de los signos de interrogación */
+.question {
+    animation: questionFloat 4s ease-in-out infinite;
+}
+
+.q1 {
+    animation-delay: 0s;
+}
+
+.q2 {
+    animation-delay: 0.7s;
+}
+
+.q3 {
+    animation-delay: 1.4s;
+}
+
+@keyframes questionFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-25px);
+        opacity: 0.9;
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* ==================== CÍRCULOS FLOTANTES ==================== */
@@ -259,8 +409,10 @@
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
-    .digit {
-        font-size: 6rem;
+
+    .lottie-animation,
+    .lost-illustration {
+        max-width: 300px;
     }
 
     .error-title {
@@ -304,12 +456,10 @@
 }
 
 @media (max-width: 480px) {
-    .digit {
-        font-size: 4.5rem;
-    }
 
-    .error-code {
-        gap: 0.5rem;
+    .lottie-animation,
+    .lost-illustration {
+        max-width: 250px;
     }
 
     .error-title {
