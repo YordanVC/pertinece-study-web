@@ -33,7 +33,7 @@ export const Sidebar = ({
             {/* Overlay para móvil */}
             {isMobileMenuOpen && (
                 <div
-                    className="lg:hidden fixed inset-0 bg-transparent z-40 transition-opacity"
+                    className="lg:hidden fixed inset-0 bg-black/50 z-30 transition-opacity"
                     onClick={onMobileMenuClose}
                 ></div>
             )}
@@ -43,7 +43,7 @@ export const Sidebar = ({
                 fixed lg:static inset-y-0 left-0 z-40
                 h-screen flex flex-col relative
                 transform transition-all duration-300 ease-in-out
-                ${isMobileMenuOpen ? 'translate-x-0 w-64' : '-translate-x-full w-0 lg:translate-x-0'}
+                ${isMobileMenuOpen ? 'translate-x-0 w-full sm:w-80' : '-translate-x-full w-0 lg:translate-x-0'}
                 ${isCollapsed ? 'lg:w-24' : 'lg:w-72'}
                 ${isDarkMode ? 'bg-gray-800 border-r border-gray-700' : 'bg-white border-r border-gray-200'}
             `}>
@@ -61,7 +61,7 @@ export const Sidebar = ({
                     <i className={`pi ${isCollapsed ? 'pi-chevron-right' : 'pi-chevron-left'} text-2xl font-bold`}></i>
                 </button>
 
-                <div className={`p-6 flex justify-center items-center transition-all duration-300 ${isCollapsed ? 'lg:p-3' : ''}`}>
+                <div className={`h-16 flex justify-center items-center transition-all duration-300 mb-2 ${isCollapsed ? 'lg:p-3' : 'p-0 lg:p-6'}`}>
                     {isCollapsed ? (
                         <div className={`w-16 h-16 flex lg:flex items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
                             }`}>
@@ -75,7 +75,7 @@ export const Sidebar = ({
                     ) : (
                         <>
                             {/* Logo pequeño para mobile */}
-                            <div className={`w-16 h-16 flex lg:hidden items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
+                            <div className={`w-16 h-16 flex lg:hidden items-center justify-center transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
                                 }`}>
                                 <img
                                     src={ugLettersOnly}

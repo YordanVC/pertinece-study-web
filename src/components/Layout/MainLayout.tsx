@@ -23,7 +23,7 @@ export const MainLayout = () => {
             {/* Botón hamburguesa para móvil */}
             <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-ug-blue text-white rounded-lg shadow-lg hover:bg-ug-blue-dark transition-all hover:scale-105 active:scale-95"
+                className="lg:hidden fixed top-2 left-2 z-50 p-3 bg-ug-blue text-white rounded-lg shadow-lg hover:bg-ug-blue-dark transition-all hover:scale-105 active:scale-95"
                 aria-label="Toggle menu"
             >
                 <i className={`pi ${isMobileMenuOpen ? 'pi-times' : 'pi-bars'} text-xl`}></i>
@@ -43,35 +43,38 @@ export const MainLayout = () => {
                     ? 'bg-gray-800 border-gray-700'
                     : 'bg-white border-gray-200'
                     }`}>
-                    <h1 className={`text-base sm:text-lg md:text-3xl font-bold ml-12 lg:ml-0 transition-colors duration-300 ${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'
+                    <h1 className={`text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold ${isMobileMenuOpen ? 'ml-0' : 'ml-12'}  lg:ml-0 transition-colors duration-300 leading-tight ${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'
                         }`}>
                         Sistema Estudio de Pertinencia UG
                     </h1>
 
                     {/* Toggle de modo oscuro/claro */}
-                    <button
-                        onClick={() => setIsDarkMode(!isDarkMode)}
-                        className={`relative w-16 h-8 rounded-full transition-all duration-300 shadow-inner
+                    {!isMobileMenuOpen && (
+                        <button
+                            onClick={() => setIsDarkMode(!isDarkMode)}
+                            className={`relative w-16 h-8 rounded-full transition-all duration-300 shadow-inner
                             ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'}
                             hover:shadow-lg active:scale-95`}
-                        aria-label="Toggle dark mode"
-                    >
-                        {/* Track del toggle */}
-                        <div className={`absolute inset-0.5 rounded-full transition-colors duration-300
+                            aria-label="Toggle dark mode"
+                        >
+                            {/* Track del toggle */}
+                            <div className={`absolute inset-0.5 rounded-full transition-colors duration-300
                             ${isDarkMode ? 'bg-linear-to-r from-indigo-500 to-purple-600' : 'bg-linear-to-r from-yellow-400 to-orange-400'}`}>
-                        </div>
+                            </div>
 
-                        {/* Botón deslizante */}
-                        <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 transform
+                            {/* Botón deslizante */}
+                            <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 transform
                             ${isDarkMode ? 'left-9' : 'left-1'}
                             flex items-center justify-center`}>
-                            {isDarkMode ? (
-                                <i className="pi pi-moon text-indigo-600 text-xs"></i>
-                            ) : (
-                                <i className="pi pi-sun text-orange-500 text-xs"></i>
-                            )}
-                        </div>
-                    </button>
+                                {isDarkMode ? (
+                                    <i className="pi pi-moon text-indigo-600 text-xs"></i>
+                                ) : (
+                                    <i className="pi pi-sun text-orange-500 text-xs"></i>
+                                )}
+                            </div>
+                        </button>
+                    )}
+
                 </header>
                 <section
                     className={`p-4 sm:p-6 lg:p-8 overflow-y-auto relative flex-1 transition-colors duration-300`}
