@@ -4,7 +4,7 @@ import ugLettersOnly from '../../assets/UgLettersOnly.svg';
 import type { SidebarProps } from '../../types/sidebar.types';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { Button } from '../Button/Button';
-import { createPortal } from 'react-dom';
+import { Button as PrimeButton } from 'primereact/button';
 
 export const Sidebar = ({
     menuItems,
@@ -42,21 +42,21 @@ export const Sidebar = ({
             )}
 
             {/* Botón de colapsar/expandir para desktop - FUERA del sidebar */}
-            <button
-                onClick={onToggleCollapse}
-                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60]
-                    w-12 h-24 bg-ug-blue text-white rounded-full
-                    items-center justify-center
-                    hover:bg-ug-blue-dark transition-all duration-300
-                    shadow-xl hover:shadow-2xl
-                    hover:scale-110 active:scale-95
-                    ${isCollapsed ? 'left-[80px]' : 'left-[320px]'}
-                `}
-                aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
-                style={{ marginLeft: '-24px' }}
+            <div
+                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60] transition-all duration-300 ease-in-out ${isCollapsed ? 'left-[80px]' : 'left-[320px]'}`}
+                style={{ marginLeft: '-1.25rem' }} // Centering 2.5rem (w-10) element
             >
-                <i className={`pi ${isCollapsed ? 'pi-chevron-right' : 'pi-chevron-left'} text-2xl font-bold`}></i>
-            </button>
+                <PrimeButton
+                    icon={`pi ${isCollapsed ? 'pi-chevron-right' : 'pi-chevron-left'}`}
+                    onClick={onToggleCollapse}
+                    className="!w-10 !h-10 !rounded-full !bg-ug-blue !border-none !text-white !p-0 shadow-lg hover:shadow-xl hover:!scale-110 !transition-all !duration-200 ring-2 ring-white dark:ring-gray-900"
+                    aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
+                    pt={{
+                        root: { className: 'flex justify-center items-center' },
+                        icon: { className: '!text-lg' }
+                    }}
+                />
+            </div>
 
             {/* Sidebar */}
             <aside className={`

@@ -1,0 +1,322 @@
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
+.not-found-container {
+    min-height: calc(100vh - 200px);
+    /* Ajustado para el layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-ug-gray) 0%, #e0e7ef 100%);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.dark .not-found-container {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+.not-found-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ==================== ANIMACIÓN DEL CÓDIGO 404 ==================== */
+.error-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+}
+
+.digit {
+    font-size: 10rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--color-ug-blue) 0%, var(--color-ug-blue-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 10px 30px rgba(0, 93, 164, 0.3);
+    animation: bounce 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.dark .digit {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+}
+
+.digit-1 {
+    animation-delay: 0s;
+}
+
+.digit-0 {
+    animation-delay: 0.2s;
+    transform: scale(1.2);
+}
+
+.digit-2 {
+    animation-delay: 0.4s;
+}
+
+/* ==================== CÍRCULOS FLOTANTES ==================== */
+.floating-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 93, 164, 0.1) 0%, rgba(0, 93, 164, 0.05) 100%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.dark .circle {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.circle-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.circle-4 {
+    width: 250px;
+    height: 250px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+/* ==================== MENSAJE DE ERROR ==================== */
+.error-message {
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.error-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-ug-blue);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.dark .error-title {
+    color: #06b6d4;
+}
+
+.error-description {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.dark .error-description {
+    color: #d1d5db;
+}
+
+/* ==================== BOTONES DE ACCIÓN ==================== */
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.error-actions .p-button {
+    transition: all 0.3s ease;
+}
+
+.error-actions .p-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 93, 164, 0.3);
+}
+
+.dark .error-actions .p-button:hover {
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+}
+
+/* ==================== PIE DE PÁGINA ==================== */
+.error-footer {
+    animation: fadeIn 1s ease-out 0.7s both;
+}
+
+.error-help {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.dark .error-help {
+    color: #9ca3af;
+}
+
+.error-help i {
+    font-size: 1.1rem;
+}
+
+/* ==================== ANIMACIONES ==================== */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.3;
+    }
+
+    25% {
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-50px) translateX(-20px) scale(1);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: translateY(-30px) translateX(20px) scale(0.9);
+        opacity: 0.4;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .digit {
+        font-size: 6rem;
+    }
+
+    .error-title {
+        font-size: 2rem;
+    }
+
+    .error-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 1rem;
+    }
+
+    .error-actions .p-button {
+        width: 100%;
+    }
+
+    .circle-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .circle-3 {
+        width: 100px;
+        height: 100px;
+    }
+
+    .circle-4 {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .digit {
+        font-size: 4.5rem;
+    }
+
+    .error-code {
+        gap: 0.5rem;
+    }
+
+    .error-title {
+        font-size: 1.5rem;
+    }
+
+    .error-description {
+        font-size: 0.95rem;
+    }
+}
