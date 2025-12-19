@@ -72,14 +72,14 @@ const LoginPage = () => {
             }}
         >
             {/*Container*/}
-            <div className={`relative w-[900px] h-[620px] bg-white rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full 
+            <div className={`relative w-[900px] h-[620px] bg-white rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full contain-layout
                 max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)]`}>
 
                 {/*------------------------FORM LOGIN-----------------------------------*/}
-                <div className={`absolute w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[300ms] ease-in-out 
-                    ${isRegisterActive ? 'delay-[700ms] right-1/2' : 'delay-[700ms] right-0'}
-                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-6 max-[650px]:!right-0
-                    ${isRegisterActive ? 'max-[650px]:!bottom-[100svh] max-[650px]:!invisible' : 'max-[650px]:!bottom-0 max-[650px]:!visible'}
+                <div className={`absolute w-1/2 h-full right-0 bg-white flex items-center text-[#333] text-center p-[35px] transition-transform duration-[600ms] ease-in-out will-change-transform z-[1]
+                    ${isRegisterActive ? 'delay-[700ms] translate-x-[-200%]' : 'delay-[700ms] translate-x-0'}
+                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-6 max-[650px]:bottom-0 max-[650px]:!right-0 max-[650px]:!translate-x-0 max-[650px]:!z-[1]
+                    ${isRegisterActive ? 'max-[650px]:!translate-y-[100svh] max-[650px]:!invisible max-[650px]:!delay-[300ms]' : 'max-[650px]:!translate-y-0 max-[650px]:!visible max-[650px]:!delay-[700ms]'}
                     max-[400px]:p-5`}>
                     <form onSubmit={handleSubmitLogin(onLogin)} className="w-full scrollbar-none overflow-y-auto max-h-full">
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)]">
@@ -130,10 +130,10 @@ const LoginPage = () => {
                 </div>
 
                 {/*------------------------FORM REGISTRO-----------------------------------*/}
-                <div className={`absolute w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[300ms] ease-in-out
-                    ${isRegisterActive ? 'visible right-1/2 delay-[1200ms]' : 'invisible delay-[300ms] right-0'}
-                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-4 max-[650px]:!right-0 max-[650px]:!pb-6
-                    ${isRegisterActive ? 'max-[650px]:!visible max-[650px]:!top-0' : 'max-[650px]:!invisible max-[650px]:!top-[-100svh]'}
+                <div className={`absolute w-1/2 h-full left-0 bg-white flex items-center text-[#333] text-center p-[35px] transition-all duration-[600ms] ease-in-out will-change-transform z-[1]
+                    ${isRegisterActive ? 'opacity-100 translate-x-0 delay-[700ms]' : 'opacity-0 translate-x-[200%] delay-[300ms]'}
+                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-4 max-[650px]:!right-0 max-[650px]:!left-auto max-[650px]:!pb-6 max-[650px]:top-0 max-[650px]:!translate-x-0
+                    ${isRegisterActive ? 'max-[650px]:!opacity-100 max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]' : 'max-[650px]:!opacity-0 max-[650px]:!translate-y-[-100svh] max-[650px]:!delay-[300ms]'}
                     max-[400px]:p-3`}>
                     <form onSubmit={handleSubmitSignup(onRegister)} className="w-full overflow-y-auto max-h-full scrollbar-none">
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.5rem,1.5vw,1rem)]">
@@ -231,14 +231,13 @@ const LoginPage = () => {
                     </form>
                 </div>
                 {/*------------------------OVERLAY IR REGISTRO-----------------------------------*/}
-                <div className="absolute w-full h-full pointer-events-none">
-                    <div className={`absolute w-[300%] h-full bg-gradient-to-r from-ug-blue to-ug-blue-dark rounded-[100px] z-[2] transition-all duration-[1800ms] ease-in-out ${isRegisterActive ? 'left-1/2' : '-left-[250%]'}
-                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!left-0
-                        ${isRegisterActive ? 'max-[650px]:!bottom-0 max-[650px]:!top-auto max-[650px]:!rounded-b-[30px] max-[650px]:!rounded-t-none' : 'max-[650px]:!top-0 max-[650px]:!bottom-auto max-[650px]:!rounded-t-[30px] max-[650px]:!rounded-b-none'}`} />
+                <div className="absolute w-full h-full pointer-events-none contain-layout">
+                    {/* Overlay de fondo removido para animación simple */}
 
-                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[300ms] ease-in-out pointer-events-auto ${isRegisterActive ? '-left-1/2 delay-[300ms]' : 'left-0 delay-[1200ms]'}
-                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!left-0 max-[650px]:!z-[4]
-                        ${isRegisterActive ? 'max-[650px]:!-top-[20svh] max-[650px]:!delay-[300ms]' : 'max-[650px]:!top-0 max-[650px]:!delay-[700ms]'}`}>
+                    <div className={`absolute w-1/2 h-full left-0 text-white flex flex-col justify-center items-center z-[2] transition-transform duration-[600ms] ease-in-out pointer-events-auto will-change-transform bg-gradient-to-r from-ug-blue to-ug-blue-dark
+                        ${isRegisterActive ? 'translate-x-[-200%] delay-[300ms]' : 'translate-x-0 delay-[700ms]'}
+                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!left-0 max-[650px]:!z-[4] max-[650px]:top-0 max-[650px]:!translate-x-0
+                        ${isRegisterActive ? 'max-[650px]:!translate-y-[-100%] max-[650px]:!delay-[300ms]' : 'max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]'}`}>
                         <div className="mb-8 max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:hidden">
                             <Lottie
                                 animationData={loginSuccessAnimation}
@@ -258,9 +257,10 @@ const LoginPage = () => {
                     </div>
 
                     {/*------------------------OVERLAY IR LOGIN-----------------------------------*/}
-                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[300ms] ease-in-out pointer-events-auto ${isRegisterActive ? 'right-0 delay-[700ms]' : '-right-1/2 delay-[300ms]'}
-                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!right-0 max-[650px]:!z-[4]
-                        ${isRegisterActive ? 'max-[650px]:!bottom-0  max-[650px]:!delay-[500ms]' : 'max-[650px]:!-bottom-[20svh] max-[650px]:!delay-[300ms]'}`}>
+                    <div className={`absolute w-1/2 h-full right-0 text-white flex flex-col justify-center items-center z-[2] transition-transform duration-[600ms] ease-in-out pointer-events-auto will-change-transform bg-gradient-to-r from-ug-blue to-ug-blue-dark
+                        ${isRegisterActive ? 'translate-x-0 delay-[700ms]' : 'translate-x-[200%] delay-[300ms]'}
+                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!right-0 max-[650px]:!z-[4] max-[650px]:bottom-0 max-[650px]:!translate-x-0 max-[650px]:rounded-b-[30px]
+                        ${isRegisterActive ? 'max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]' : 'max-[650px]:!translate-y-[100%] max-[650px]:!delay-[300ms]'}`}>
                         <div className="mb-8 max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:hidden">
                             <Lottie
                                 animationData={loginSuccessAnimation}
@@ -277,10 +277,10 @@ const LoginPage = () => {
                         >
                             Login
                         </CustomButton>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div >
+                </div >
+            </div >
+        </div >
     );
 };
 
