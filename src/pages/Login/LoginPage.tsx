@@ -71,25 +71,23 @@ const LoginPage = () => {
                 backgroundRepeat: 'no-repeat'
             }}
         >
-            {/* Contenedor principal */}
+            {/*Container*/}
             <div className={`relative w-[900px] h-[620px] bg-white rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full 
-                max-[650px]:h-[calc(100vh-40px)] max-[650px]:w-[calc(100vw-40px)]`}>
+                max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)]`}>
 
-                {/* Formulario de Login */}
-                <div className={`absolute w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[600ms] ease-in-out 
-                    ${isRegisterActive ? 'delay-[1200ms] right-1/2' : 'delay-[1200ms] right-0'}
-                    max-[650px]:!w-full max-[650px]:!h-[65%] max-[650px]:p-6
-                    max-[650px]:${isRegisterActive ? '!bottom-[35%] !right-0' : '!bottom-0 !right-0'}
+                {/*------------------------FORM LOGIN-----------------------------------*/}
+                <div className={`absolute w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[300ms] ease-in-out 
+                    ${isRegisterActive ? 'delay-[700ms] right-1/2' : 'delay-[700ms] right-0'}
+                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-6 max-[650px]:!right-0
+                    ${isRegisterActive ? 'max-[650px]:!bottom-[100svh] max-[650px]:!invisible' : 'max-[650px]:!bottom-0 max-[650px]:!visible'}
                     max-[400px]:p-5`}>
                     <form onSubmit={handleSubmitLogin(onLogin)} className="w-full scrollbar-none overflow-y-auto max-h-full">
-                        {/* Logo UG arriba del título */}
-                        <div className="flex justify-center mb-4 max-[650px]:mb-2">
-                            <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-12" />
+                        <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)]">
+                            <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-[clamp(4rem,12vw,6rem)]" />
                         </div>
-                        <h1 className="text-4xl mb-2 max-[650px]:text-3xl max-[400px]:text-[28px]">Acceso</h1>
+                        <h1 className="text-4xl mb-2 max-[650px]:text-[clamp(1.5rem,5vw,2rem)] font-bold max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)] mt-0 max-[400px]:text-2xl">Acceso</h1>
 
-                        {/* Username Input */}
-                        <div className="relative my-5">
+                        <div className="relative my-5 max-[650px]:my-5">
                             <InputText
                                 type="text"
                                 placeholder="Nombre de usuario"
@@ -103,8 +101,7 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Password Input */}
-                        <div className="relative my-5">
+                        <div className="relative my-5 max-[650px]:my-5">
                             <Password
                                 placeholder="Contraseña"
                                 toggleMask
@@ -126,24 +123,25 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Submit Button */}
                         <CustomButton type="submit" variant="primary" className="!w-full !h-12 !rounded-lg !shadow-[0_0_10px_rgba(0,0,0,0.1)]">
                             Acceso
                         </CustomButton>
                     </form>
                 </div>
 
-                {/* Formulario de Registro */}
-                <div className={`absolute right-0 w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[600ms] ease-in-out ${isRegisterActive ? 'visible right-1/2 delay-[1200ms]' : 'invisible delay-[600ms]'} max-[400px]:p-5`}>
+                {/*------------------------FORM REGISTRO-----------------------------------*/}
+                <div className={`absolute w-1/2 h-full bg-white flex items-center text-[#333] text-center p-[35px] z-[1] transition-all duration-[300ms] ease-in-out
+                    ${isRegisterActive ? 'visible right-1/2 delay-[1200ms]' : 'invisible delay-[300ms] right-0'}
+                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-4 max-[650px]:!right-0 max-[650px]:!pb-6
+                    ${isRegisterActive ? 'max-[650px]:!visible max-[650px]:!top-0' : 'max-[650px]:!invisible max-[650px]:!top-[-100svh]'}
+                    max-[400px]:p-3`}>
                     <form onSubmit={handleSubmitSignup(onRegister)} className="w-full overflow-y-auto max-h-full scrollbar-none">
-                        {/* Logo UG arriba del título */}
-                        <div className="flex justify-center mb-4">
-                            <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto" />
+                        <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.5rem,1.5vw,1rem)]">
+                            <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-[clamp(3.5rem,10vw,5rem)]" />
                         </div>
-                        <h1 className="text-4xl mb-2 max-[400px]:text-[30px]">Registro</h1>
+                        <h1 className="text-4xl mb-2 max-[650px]:text-[clamp(1.5rem,5vw,2rem)] max-[400px]:text-[30px]">Registro</h1>
 
-                        {/* Username Input */}
-                        <div className="relative my-4">
+                        <div className="relative my-4 max-[650px]:my-2">
                             <InputText
                                 type="text"
                                 placeholder="Usuario"
@@ -157,8 +155,7 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Name Input */}
-                        <div className="relative my-4">
+                        <div className="relative my-4 max-[650px]:my-2">
                             <InputText
                                 type="text"
                                 placeholder="Nombres"
@@ -172,8 +169,7 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Lastname Input */}
-                        <div className="relative my-4">
+                        <div className="relative my-4 max-[650px]:my-2">
                             <InputText
                                 type="text"
                                 placeholder="Apellidos"
@@ -187,8 +183,7 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Email Input */}
-                        <div className="relative my-4">
+                        <div className="relative my-4 max-[650px]:my-2">
                             <InputText
                                 type="email"
                                 placeholder="Correo electrónico"
@@ -208,8 +203,7 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Password Input */}
-                        <div className="relative my-4">
+                        <div className="relative my-4 max-[650px]:my-2">
                             <Password
                                 placeholder="Contraseña"
                                 toggleMask
@@ -231,52 +225,54 @@ const LoginPage = () => {
                             )}
                         </div>
 
-                        {/* Submit Button */}
-                        <CustomButton type="submit" variant="primary" className="!w-full !h-12 !rounded-lg !shadow-[0_0_10px_rgba(0,0,0,0.1)]">
+                        <CustomButton type="submit" variant="primary" className="!w-full !h-12 !rounded-lg !shadow-[0_0_10px_rgba(0,0,0,0.1)] max-[650px]:!bg-white max-[650px]:!text-ug-blue max-[650px]:!border-2 max-[650px]:!border-ug-blue max-[650px]:mb-4 max-[650px]:!h-14 max-[650px]:!text-base">
                             Registro
                         </CustomButton>
                     </form>
                 </div>
-
-                {/* Toggle Box - Panel de Bienvenida */}
+                {/*------------------------OVERLAY IR REGISTRO-----------------------------------*/}
                 <div className="absolute w-full h-full pointer-events-none">
-                    {/* Fondo animado */}
-                    <div className={`absolute w-[300%] h-full bg-gradient-to-r from-ug-blue to-ug-blue-dark rounded-[100px] z-[2] transition-all duration-[1800ms] ease-in-out ${isRegisterActive ? 'left-1/2' : '-left-[250%]'}`} />
+                    <div className={`absolute w-[300%] h-full bg-gradient-to-r from-ug-blue to-ug-blue-dark rounded-[100px] z-[2] transition-all duration-[1800ms] ease-in-out ${isRegisterActive ? 'left-1/2' : '-left-[250%]'}
+                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!left-0
+                        ${isRegisterActive ? 'max-[650px]:!bottom-0 max-[650px]:!top-auto max-[650px]:!rounded-b-[30px] max-[650px]:!rounded-t-none' : 'max-[650px]:!top-0 max-[650px]:!bottom-auto max-[650px]:!rounded-t-[30px] max-[650px]:!rounded-b-none'}`} />
 
-                    {/* Panel Izquierdo - Registro */}
-                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[600ms] ease-in-out pointer-events-auto ${isRegisterActive ? '-left-1/2 delay-[600ms]' : 'left-0 delay-[1200ms]'}`}>
-                        <div className="mb-8">
+                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[300ms] ease-in-out pointer-events-auto ${isRegisterActive ? '-left-1/2 delay-[300ms]' : 'left-0 delay-[1200ms]'}
+                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!left-0 max-[650px]:!z-[4]
+                        ${isRegisterActive ? 'max-[650px]:!-top-[20svh] max-[650px]:!delay-[300ms]' : 'max-[650px]:!top-0 max-[650px]:!delay-[700ms]'}`}>
+                        <div className="mb-8 max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:hidden">
                             <Lottie
                                 animationData={loginSuccessAnimation}
                                 loop={true}
-                                className="w-48 h-48"
+                                className="w-48 h-48 max-[650px]:w-[clamp(4rem,12vw,7rem)] max-[650px]:h-[clamp(4rem,12vw,7rem)]"
                             />
                         </div>
-                        <h1 className="text-4xl font-semibold mb-4 max-[400px]:text-[30px]">¡Hola, Bienvenido!</h1>
-                        <p className="text-sm mb-8">¿No tienes una cuenta?</p>
+                        <h1 className="text-4xl font-semibold mb-4 max-[650px]:text-[clamp(1.25rem,4vw,1.5rem)] max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:mb-2">¡Hola, Bienvenido!</h1>
+                        <p className="text-sm mb-8 max-[650px]:text-[clamp(0.75rem,2.5vw,0.875rem)] max-[650px]:mb-[clamp(0.5rem,1.5vw,0.75rem)]">¿No tienes una cuenta?</p>
                         <CustomButton
                             variant="secondary"
-                            className="!w-40 !h-12 !bg-transparent !border-2 !border-white !text-white hover:!bg-white hover:!text-ug-blue !shadow-none"
+                            className="!w-40 !h-12 !bg-transparent !border-2 !border-white !text-white hover:!bg-white hover:!text-ug-blue !shadow-none max-[650px]:!w-[clamp(8rem,30vw,10rem)] max-[650px]:!h-[clamp(2.75rem,10vw,3.25rem)] max-[650px]:!text-[clamp(0.875rem,3vw,1rem)] max-[650px]:!font-semibold"
                             onClick={() => setIsRegisterActive(true)}
                         >
                             Registro
                         </CustomButton>
                     </div>
 
-                    {/* Panel Derecho - Login */}
-                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[600ms] ease-in-out pointer-events-auto ${isRegisterActive ? 'right-0 delay-[1200ms]' : '-right-1/2 delay-[600ms]'}`}>
-                        <div className="mb-8">
+                    {/*------------------------OVERLAY IR LOGIN-----------------------------------*/}
+                    <div className={`absolute w-1/2 h-full text-white flex flex-col justify-center items-center z-[2] transition-all duration-[300ms] ease-in-out pointer-events-auto ${isRegisterActive ? 'right-0 delay-[700ms]' : '-right-1/2 delay-[300ms]'}
+                        max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!right-0 max-[650px]:!z-[4]
+                        ${isRegisterActive ? 'max-[650px]:!bottom-0  max-[650px]:!delay-[500ms]' : 'max-[650px]:!-bottom-[20svh] max-[650px]:!delay-[300ms]'}`}>
+                        <div className="mb-8 max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:hidden">
                             <Lottie
                                 animationData={loginSuccessAnimation}
                                 loop={true}
-                                className="w-48 h-48"
+                                className="w-48 h-48 max-[650px]:w-[clamp(4rem,12vw,7rem)] max-[650px]:h-[clamp(4rem,12vw,7rem)]"
                             />
                         </div>
-                        <h1 className="text-4xl font-semibold mb-4 max-[400px]:text-[30px]">¡Bienvenido de Nuevo!</h1>
-                        <p className="text-sm mb-8">¿Ya tienes una cuenta?</p>
+                        <h1 className="text-4xl font-semibold mb-4 max-[650px]:text-[clamp(1.25rem,4vw,1.5rem)] max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:mb-2">¡Bienvenido de Nuevo!</h1>
+                        <p className="text-sm mb-8 max-[650px]:text-[clamp(0.75rem,2.5vw,0.875rem)] max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)]">¿Ya tienes una cuenta?</p>
                         <CustomButton
                             variant="secondary"
-                            className="!w-40 !h-12 !bg-transparent !border-2 !border-white !text-white hover:!bg-white hover:!text-ug-blue !shadow-none"
+                            className="!w-40 !h-12 !bg-transparent !border-2 !border-white !text-white hover:!bg-white hover:!text-ug-blue !shadow-none max-[650px]:!w-[clamp(8rem,30vw,10rem)] max-[650px]:!h-[clamp(2.75rem,10vw,3.25rem)] max-[650px]:!text-[clamp(0.875rem,3vw,1rem)] max-[650px]:!font-semibold"
                             onClick={() => setIsRegisterActive(false)}
                         >
                             Login
