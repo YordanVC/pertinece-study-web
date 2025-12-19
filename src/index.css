@@ -192,3 +192,34 @@
 .dark ::-webkit-scrollbar-corner {
     background: #1f2937;
 }
+
+/* ==================== ESTILOS PARA LOGIN PAGE ==================== */
+
+/* Asegurar que el body no tenga scroll cuando el login está activo */
+body:has(.login-page) {
+    overflow: hidden;
+}
+
+/* Estilos personalizados para PrimeReact Password en Login */
+.p-password {
+    width: 100%;
+}
+
+.p-password .p-password-input {
+    width: 100%;
+}
+
+/* Ocultar los iconos de toggle de PrimeReact Password en login */
+.p-password-toggle-icon {
+    display: none !important;
+}
+
+/* Ocultar scrollbar pero mantener scroll funcional */
+.scrollbar-none {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+}
