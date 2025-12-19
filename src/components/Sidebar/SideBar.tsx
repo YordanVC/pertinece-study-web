@@ -132,7 +132,7 @@ export const Sidebar = ({
                         <Button
                             variant="danger"
                             onClick={() => {
-                                // Aquí irá la lógica de logout
+                                navigate('/login');
                                 console.log('Logout clicked');
                             }}
                             icon="pi-sign-out"

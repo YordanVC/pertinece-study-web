@@ -200,18 +200,10 @@ body:has(.login-page) {
     overflow: hidden;
 }
 
-/* Estilos personalizados para PrimeReact Password en Login */
 .p-password {
-    width: 100%;
-}
-
-.p-password .p-password-input {
-    width: 100%;
-}
-
-/* Ocultar los iconos de toggle de PrimeReact Password en login */
-.p-password-toggle-icon {
-    display: none !important;
+  width: 100% !important;
+  display: block !important;
+  position: relative;
 }
 
 /* Ocultar scrollbar pero mantener scroll funcional */
