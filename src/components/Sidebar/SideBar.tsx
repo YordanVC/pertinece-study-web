@@ -53,13 +53,13 @@ export const Sidebar = ({
 
             {/* Botón de colapsar/expandir para desktop - FUERA del sidebar */}
             <div
-                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60] transition-all duration-300 ease-in-out ${isCollapsed ? 'left-[80px]' : 'left-[320px]'}`}
+                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60] transition-all duration-300 ease-in-out ${isCollapsed ? 'left-20' : 'left-80'}`}
                 style={{ marginLeft: '-0.875rem' }} // Adjusted for smaller button (1.75rem / 2)
             >
                 <PrimeButton
                     icon={`pi ${isCollapsed ? 'pi-chevron-right' : 'pi-chevron-left'}`}
                     onClick={onToggleCollapse}
-                    className="!w-7 !h-7 !rounded-full !bg-ug-blue !border-none !text-white !p-0 shadow-md hover:!w-10 hover:!h-10 hover:shadow-xl !transition-all !duration-200 ring-2 ring-white dark:ring-gray-900"
+                    className="w-7! h-7! !rounded-full! bg-ug-blue! border-none! text-white! p-0! shadow-md hover:w-10! hover:h-10! hover:shadow-xl transition-all! duration-200! ring-2 ring-white dark:ring-gray-900"
                     aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
                     pt={{
                         root: { className: 'flex justify-center items-center' },

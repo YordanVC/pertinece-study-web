@@ -147,9 +147,15 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
     margin-bottom: 2rem;
     animation: fadeIn 1s ease-out 0.5s both;
+}
+
+@media (max-width: 640px) {
+    .error-actions {
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 .error-actions .p-button {

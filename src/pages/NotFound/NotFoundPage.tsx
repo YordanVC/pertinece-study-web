@@ -36,19 +36,20 @@ export const NotFoundPage = () => {
                 </div>
 
                 {/* Botones de acción */}
-                <div className="error-actions h-15">
+                <div className="error-actions h-15 flex flex-col sm:flex-row gap-3">
                     <Button
                         variant="primary"
                         icon="pi pi-home"
                         onClick={() => navigate('/')}
-                        className="p-button-lg"
+                        className="p-button-lg w-full sm:w-auto py-6"
                     >Volver al inicio</Button>
                     <Button
                         variant="secondary"
                         icon="pi pi-arrow-left"
                         onClick={() => navigate(-1)}
-                        className="p-button-lg bg-white"
+                        className="p-button-lg bg-white w-full sm:w-auto py-6"
                     >Volver atrás</Button>
+                    <br />
                 </div>
 
                 {/* Información adicional */}

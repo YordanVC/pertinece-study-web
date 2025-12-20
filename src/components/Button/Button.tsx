@@ -41,21 +41,24 @@ export const Button = ({
     // Estilos específicos por variante
     const variantStyles = {
         primary: `
-            px-4 py-2
+            px-4 py-3
+            flex items-center justify-center
             bg-ug-blue text-white
             hover:bg-ug-blue-dark
             shadow-[0_2px_8px_rgba(0,93,164,0.3)]
             hover:shadow-[0_4px_16px_rgba(0,93,164,0.4)]
         `,
         secondary: `
-            px-4 py-2
+            px-4 py-3
+            flex items-center justify-center
             ${isDarkMode
                 ? 'bg-gray-700 text-gray-200 hover:bg-gray-600 shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300 shadow-[0_2px_8px_rgba(0,0,0,0.1)]'
             }
         `,
         success: `
-            px-4 py-2
+            px-4 py-3
+            flex items-center justify-center
             bg-green-600 text-white
             hover:bg-green-700
             shadow-[0_2px_8px_rgba(34,197,94,0.3)]

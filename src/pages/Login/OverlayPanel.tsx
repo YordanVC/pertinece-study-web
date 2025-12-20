@@ -18,13 +18,13 @@ export const OverlayPanel = ({ title, description, buttonText, onClick, isActive
         <div
             className={`absolute w-1/2 h-full ${isLeft ? 'left-0' : 'right-0'} text-white flex flex-col justify-center items-center z-[2] transition-transform duration-[600ms] ease-in-out pointer-events-auto will-change-transform bg-gradient-to-r from-ug-blue to-ug-blue-dark
                 ${isLeft
-                    ? isActive ? 'translate-x-[-200%] delay-[300ms]' : 'translate-x-0 delay-[700ms]'
-                    : isActive ? 'translate-x-0 delay-[700ms]' : 'translate-x-[200%] delay-[300ms]'
+                    ? isActive ? 'translate-x-[-200%] delay-300' : 'translate-x-0 delay-700'
+                    : isActive ? 'translate-x-0 delay-700' : 'translate-x-[200%] delay-300'
                 }
-                max-[650px]:!w-full max-[650px]:!h-[20svh] max-[650px]:!z-[4] max-[650px]:!translate-x-0 max-[650px]:${isLeft ? '!left-0 top-0' : '!right-0 bottom-0'}
+                max-[650px]:w-full! max-[650px]:h-[20svh]! max-[650px]:z-4! max-[650px]:translate-x-0! max-[650px]:${isLeft ? 'left-0 top-0!' : 'right-0 bottom-0!'}
                 ${isLeft
-                    ? isActive ? 'max-[650px]:!translate-y-[-100%] max-[650px]:!delay-[300ms]' : 'max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]'
-                    : isActive ? 'max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]' : 'max-[650px]:!translate-y-[100%] max-[650px]:!delay-[300ms]'
+                    ? isActive ? 'max-[650px]:translate-y-[-100%]! max-[650px]:delay-300!' : 'max-[650px]:translate-y-0! max-[650px]:delay-700!'
+                    : isActive ? 'max-[650px]:translate-y-0! max-[650px]:delay-700!' : 'max-[650px]:translate-y-full! max-[650px]:delay-300!'
                 }`}
         >
             <div className="mb-8 max-[650px]:mb-[clamp(0.25rem,1vw,0.5rem)] max-[400px]:hidden">
