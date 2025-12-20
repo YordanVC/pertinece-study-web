@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'sidebar' | 'sidebar-active';
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'sidebar' | 'sidebar-active';
 
 interface ButtonProps {
     children: ReactNode;
@@ -12,6 +12,8 @@ interface ButtonProps {
     isDarkMode?: boolean;
     className?: string;
     type?: 'button' | 'submit' | 'reset';
+    disabled?: boolean;
+    loading?: boolean;
 }
 
 export const Button = ({
@@ -23,7 +25,9 @@ export const Button = ({
     isActive = false,
     isDarkMode = false,
     className = '',
-    type = 'button'
+    type = 'button',
+    disabled = false,
+    loading = false
 }: ButtonProps) => {
     // Estilos base comunes a todos los botones
     const baseStyles = `
@@ -31,6 +35,7 @@ export const Button = ({
         transform hover:scale-[1.02] active:scale-[0.98]
         relative overflow-hidden group
         font-medium rounded-lg
+        ${disabled || loading ? 'opacity-60 cursor-not-allowed hover:scale-100 active:scale-100' : 'cursor-pointer'}
     `;
 
     // Estilos específicos por variante
@@ -48,6 +53,13 @@ export const Button = ({
                 ? 'bg-gray-700 text-gray-200 hover:bg-gray-600 shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300 shadow-[0_2px_8px_rgba(0,0,0,0.1)]'
             }
+        `,
+        success: `
+            px-4 py-2
+            bg-green-600 text-white
+            hover:bg-green-700
+            shadow-[0_2px_8px_rgba(34,197,94,0.3)]
+            hover:shadow-[0_4px_16px_rgba(34,197,94,0.4)]
         `,
         danger: `
             w-full flex items-center justify-center
@@ -98,7 +110,8 @@ export const Button = ({
     return (
         <button
             type={type}
-            onClick={onClick}
+            onClick={disabled || loading ? undefined : onClick}
+            disabled={disabled || loading}
             className={`${baseStyles} ${variantStyles[activeVariant]} ${className}`}
         >
             {/* Efecto de brillo al hacer clic */}
@@ -108,10 +121,12 @@ export const Button = ({
                 transition-all duration-500 ease-out">
             </span>
 
-            {/* Icono */}
-            {icon && (
+            {/* Icono o spinner de loading */}
+            {loading ? (
+                <i className={`pi pi-spinner pi-spin ${iconStyles} ${iconSizeClass}`}></i>
+            ) : icon ? (
                 <i className={`pi ${icon} ${iconStyles} ${iconSizeClass}`}></i>
-            )}
+            ) : null}
 
             {/* Texto del botón */}
             <span className={`relative z-10 transition-all duration-300 ${isCollapsed && (variant === 'sidebar' || variant === 'danger') ? 'lg:hidden' : ''}`}>

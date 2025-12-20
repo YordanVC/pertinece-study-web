@@ -268,7 +268,7 @@ const LoginPage = () => {
                 {/*------------------------OVERLAYS-----------------------------------*/}
                 <div className="absolute w-full h-full pointer-events-none contain-layout">
                     <OverlayPanel
-                        title="¡Hola, Bienvenido!"
+                        title="¡Bienvenido al sistema!"
                         description="¿No tienes una cuenta?"
                         buttonText="Registro"
                         onClick={() => setIsRegisterActive(true)}
@@ -277,7 +277,7 @@ const LoginPage = () => {
                     />
 
                     <OverlayPanel
-                        title="¡Hola, Bienvenido!"
+                        title="¡Bienvenido al sistema!"
                         description="¿Ya tienes una cuenta?"
                         buttonText="Login"
                         onClick={() => setIsRegisterActive(false)}

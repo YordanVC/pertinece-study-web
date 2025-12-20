@@ -6,7 +6,6 @@ import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
 import { useTheme } from '../../context/ThemeContext';
-
 export const MainLayout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -22,7 +21,6 @@ export const MainLayout = () => {
             >
                 <i className={`pi ${isMobileMenuOpen ? 'pi-times' : 'pi-bars'} text-xl`}></i>
             </button>
-
             <Sidebar
                 menuItems={mainMenuItems}
                 logoAlt="UG Logo"

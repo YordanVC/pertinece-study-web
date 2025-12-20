@@ -5,6 +5,8 @@ import type { SidebarProps } from '../../types/sidebar.types';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { Button } from '../Button/Button';
 import { Button as PrimeButton } from 'primereact/button';
+import { ConfirmDialog } from '../Modal/ConfirmDialog';
+import { useState } from 'react';
 
 export const Sidebar = ({
     menuItems,
@@ -16,6 +18,7 @@ export const Sidebar = ({
     onToggleCollapse,
     isDarkMode = false
 }: SidebarProps) => {
+    const [confirmDialogVisible, setConfirmDialogVisible] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -25,6 +28,10 @@ export const Sidebar = ({
         navigate(path);
         onMobileMenuClose?.();
     };
+    const handleLogout = () => {
+        navigate('/login');
+        console.log('Logout clicked');
+    }
 
     // Función para obtener ícono por defecto si no existe
     const getItemIcon = (icon?: string) => {
@@ -131,10 +138,7 @@ export const Sidebar = ({
                     <div className="relative group/tooltip">
                         <Button
                             variant="danger"
-                            onClick={() => {
-                                navigate('/login');
-                                console.log('Logout clicked');
-                            }}
+                            onClick={() => setConfirmDialogVisible(true)}
                             icon="pi-sign-out"
                             isCollapsed={isCollapsed}
                             isDarkMode={isDarkMode}
@@ -144,6 +148,14 @@ export const Sidebar = ({
                         {isCollapsed && <Tooltip message="Cerrar Sesión" />}
                     </div>
                 </div>
+                <ConfirmDialog
+                    visible={confirmDialogVisible}
+                    variant='danger'
+                    onHide={() => setConfirmDialogVisible(false)}
+                    title="Confirmar cierre de sesión"
+                    message="¿Estás a punto de cerrar sesión?"
+                    onConfirm={handleLogout}
+                />
             </aside>
         </>
     );
