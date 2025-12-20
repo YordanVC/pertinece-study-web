@@ -116,10 +116,10 @@ const LoginPage = () => {
                 max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)] ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
 
                 {/*------------------------FORM LOGIN-----------------------------------*/}
-                <div className={`absolute w-1/2 h-full right-0 flex items-center text-center p-[35px] transition-all duration-[600ms] ease-in-out will-change-transform z-[1]
-                    ${isRegisterActive ? 'delay-[700ms] translate-x-[-200%]' : 'delay-[700ms] translate-x-0'}
-                    max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-6 max-[650px]:bottom-0 max-[650px]:!right-0 max-[650px]:!translate-x-0 max-[650px]:!z-[1]
-                    ${isRegisterActive ? 'max-[650px]:!translate-y-[100svh] max-[650px]:!invisible max-[650px]:!delay-[300ms]' : 'max-[650px]:!translate-y-0 max-[650px]:!visible max-[650px]:!delay-[700ms]'}
+                <div className={`absolute w-1/2 h-full right-0 flex items-center text-center p-8.75 transition-all duration-600 ease-in-out will-change-transform z-1
+                    ${isRegisterActive ? 'delay-700 translate-x-[-200%]' : 'delay-700 translate-x-0'}
+                    max-[650px]:w-full! max-[650px]:h-[calc(100%-20svh)]! max-[650px]:p-6 max-[650px]:bottom-0 max-[650px]:right-0! max-[650px]:translate-x-0! max-[650px]:z-1!
+                    ${isRegisterActive ? 'max-[650px]:translate-y-[100svh]! max-[650px]:invisible! max-[650px]:delay-300!' : 'max-[650px]:translate-y-0! max-[650px]:visible! max-[650px]:delay-700!'}
                     max-[400px]:h1p-5 ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-[#333]'}`}>
                     <form onSubmit={handleSubmitLogin(onLogin)} className="w-full p-2 scrollbar-none overflow-y-auto max-h-full">
                         <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>SISTEMA DE ESTUDIO DE PERTINENCIA</h1>

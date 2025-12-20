@@ -98,7 +98,7 @@ export const ConfirmDialog = ({
         >
             <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 py-2">
                 {/* Icono */}
-                <div className="flex items-center justify-center flex-shrink-0">
+                <div className="flex items-center justify-center shrink-0">
                     <i className={`pi ${displayIcon} ${iconColors[variant]}`} style={{ fontSize: '4rem' }}></i>
                 </div>
 
