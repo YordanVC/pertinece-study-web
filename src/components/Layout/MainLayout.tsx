@@ -59,7 +59,7 @@ export const MainLayout = () => {
                 <section
                     className="
                         relative flex-1 overflow-y-auto
-                        mt-4 p-4 sm:p-6 lg:p-8
+                        mt-0 p-4 sm:p-6 lg:p-8
                         transition-colors duration-300
                         bg-cover bg-center bg-no-repeat bg-fixed
                     "
