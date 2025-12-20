@@ -64,6 +64,7 @@ const LoginPage = () => {
         navigate('/');
         toast.showSuccess('Sesión iniciada', 'Has iniciado sesión correctamente.');
         setTimeout(() => toast.showError('Sesión iniciada', 'Has iniciado sesión correctamente.'), 3000);
+        setTimeout(() => toast.showWarn('Sesión iniciada', 'Has iniciado sesión correctamente.'), 4000);
         // Aquí irá la lógica de autenticación
     };
 
