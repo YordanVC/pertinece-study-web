@@ -7,6 +7,7 @@ import { Button } from '../Button/Button';
 import { Button as PrimeButton } from 'primereact/button';
 import { ConfirmDialog } from '../Modal/ConfirmDialog';
 import { useState } from 'react';
+import { useToast } from '../../context/ToastContext';
 
 export const Sidebar = ({
     menuItems,
@@ -21,6 +22,7 @@ export const Sidebar = ({
     const [confirmDialogVisible, setConfirmDialogVisible] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const toast = useToast();
 
     const isActive = (path: string) => location.pathname === path;
 
@@ -30,6 +32,7 @@ export const Sidebar = ({
     };
     const handleLogout = () => {
         navigate('/login');
+        toast.showInfo('Sesión cerrada', 'Has cerrado sesión correctamente.');
         console.log('Logout clicked');
     }
 

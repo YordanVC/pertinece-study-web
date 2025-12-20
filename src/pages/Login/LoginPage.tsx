@@ -9,6 +9,7 @@ import logoSvg from '../../assets/UgLettersOnly.svg';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { Toggle } from '../../components/Toggle/Toggle';
+import { useToast } from '../../context/ToastContext';
 
 interface LoginFormData {
     username: string;
@@ -26,6 +27,7 @@ interface RegisterFormData {
 const LoginPage = () => {
     const [isRegisterActive, setIsRegisterActive] = useState(false);
     const navigate = useNavigate();
+    const toast = useToast();
     const { isDarkMode, toggleTheme } = useTheme();
 
     // React Hook Forms para Login
@@ -60,6 +62,8 @@ const LoginPage = () => {
     const onLogin = async (data: LoginFormData) => {
         console.log('Login data:', data);
         navigate('/');
+        toast.showSuccess('Sesión iniciada', 'Has iniciado sesión correctamente.');
+        setTimeout(() => toast.showError('Sesión iniciada', 'Has iniciado sesión correctamente.'), 3000);
         // Aquí irá la lógica de autenticación
     };
 
