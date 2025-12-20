@@ -30,19 +30,27 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
         const styles = {
             success: {
                 borderColor: isDarkMode ? '#22c55e' : '#16a34a',
-                boxShadow: isDarkMode ? '0 4px 14px 0 rgba(34, 197, 94, 0.25)' : '0 4px 14px 0 rgba(22, 163, 74, 0.2)'
+                boxShadow: isDarkMode
+                    ? '0 0 0 1px rgba(34, 197, 94, 0.5), 0 4px 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.3)'
+                    : '0 0 0 1px rgba(22, 163, 74, 0.3), 0 4px 20px rgba(22, 163, 74, 0.25), 0 0 30px rgba(22, 163, 74, 0.2)'
             },
             info: {
                 borderColor: isDarkMode ? '#3b82f6' : '#2563eb',
-                boxShadow: isDarkMode ? '0 4px 14px 0 rgba(59, 130, 246, 0.25)' : '0 4px 14px 0 rgba(37, 99, 235, 0.2)'
+                boxShadow: isDarkMode
+                    ? '0 0 0 1px rgba(59, 130, 246, 0.5), 0 4px 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.3)'
+                    : '0 0 0 1px rgba(37, 99, 235, 0.3), 0 4px 20px rgba(37, 99, 235, 0.25), 0 0 30px rgba(37, 99, 235, 0.2)'
             },
             warn: {
                 borderColor: isDarkMode ? '#eab308' : '#ca8a04',
-                boxShadow: isDarkMode ? '0 4px 14px 0 rgba(234, 179, 8, 0.25)' : '0 4px 14px 0 rgba(202, 138, 4, 0.2)'
+                boxShadow: isDarkMode
+                    ? '0 0 0 1px rgba(234, 179, 8, 0.5), 0 4px 20px rgba(234, 179, 8, 0.4), 0 0 40px rgba(234, 179, 8, 0.3)'
+                    : '0 0 0 1px rgba(202, 138, 4, 0.3), 0 4px 20px rgba(202, 138, 4, 0.25), 0 0 30px rgba(202, 138, 4, 0.2)'
             },
             error: {
                 borderColor: isDarkMode ? '#ef4444' : '#dc2626',
-                boxShadow: isDarkMode ? '0 4px 14px 0 rgba(239, 68, 68, 0.25)' : '0 4px 14px 0 rgba(220, 38, 38, 0.2)'
+                boxShadow: isDarkMode
+                    ? '0 0 0 1px rgba(239, 68, 68, 0.5), 0 4px 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.3)'
+                    : '0 0 0 1px rgba(220, 38, 38, 0.3), 0 4px 20px rgba(220, 38, 38, 0.25), 0 0 30px rgba(220, 38, 38, 0.2)'
             }
         };
         return styles[severity];
@@ -54,8 +62,7 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 severity: message.severity,
                 summary: message.summary,
                 detail: message.detail,
-                life: message.life || 3000,
-                contentClassName: `toast-${message.severity}`
+                life: message.life || 3000
             });
         },
         showSuccess: (summary: string, detail?: string) => {
@@ -63,8 +70,7 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 severity: 'success',
                 summary,
                 detail,
-                life: 3000,
-                contentClassName: 'toast-success'
+                life: 3000
             });
         },
         showInfo: (summary: string, detail?: string) => {
@@ -72,8 +78,7 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 severity: 'info',
                 summary,
                 detail,
-                life: 3000,
-                contentClassName: 'toast-info'
+                life: 3000
             });
         },
         showWarn: (summary: string, detail?: string) => {
@@ -81,8 +86,7 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 severity: 'warn',
                 summary,
                 detail,
-                life: 4000,
-                contentClassName: 'toast-warn'
+                life: 4000
             });
         },
         showError: (summary: string, detail?: string) => {
@@ -90,8 +94,7 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 severity: 'error',
                 summary,
                 detail,
-                life: 5000,
-                contentClassName: 'toast-error'
+                life: 5000
             });
         },
         clear: () => {
@@ -107,14 +110,19 @@ export const Toast = forwardRef<ToastRef>((_, ref) => {
                 root: {
                     className: 'w-full sm:w-96'
                 },
-                message: {
-                    className: `${isDarkMode
-                        ? '!bg-gray-800 !border-gray-700 shadow-xl'
-                        : '!bg-white !border-gray-200 shadow-md'
-                        } border-2 rounded-lg backdrop-blur-sm`,
-                    style: {
-                        backgroundColor: isDarkMode ? '#1f2937 !important' : '#ffffff !important'
-                    }
+                message: ({ state }: any) => {
+                    const severity = (state.messages[0]?.severity || 'info') as ToastSeverity;
+                    const severityStyles = getSeverityStyles(severity);
+                    return {
+                        className: `${isDarkMode
+                            ? '!bg-gray-800'
+                            : '!bg-white'
+                            } rounded-lg backdrop-blur-sm`,
+                        style: {
+                            backgroundColor: isDarkMode ? '#1f2937 !important' : '#ffffff !important',
+                            borderLeft: `4px solid ${severityStyles.borderColor} !important`
+                        }
+                    };
                 },
                 content: {
                     className: 'flex items-center gap-3 p-4'

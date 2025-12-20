@@ -1,45 +1,54 @@
-/* Toast con borde y sombra de color según el tipo */
+/* Toast borders y shadows por severity */
 
-/* Success Toast */
-.p-toast-message-success {
-    border-left: 4px solid #22c55e !important;
-    box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.25) !important;
+/* Success - Verde */
+.p-toast .p-toast-message-success {
+    border: 1px solid rgba(34, 197, 94, 0.25) !important;
+    outline: 1px solid rgba(34, 197, 94, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5), 0 4px 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.3) !important;
 }
 
-.dark .p-toast-message-success {
-    border-left: 4px solid #22c55e !important;
-    box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.3) !important;
+/* Info - Azul */
+.p-toast .p-toast-message-info {
+    border: 1px solid rgba(59, 130, 246, 0.25) !important;
+    outline: 1px solid rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 4px 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.3) !important;
 }
 
-/* Info Toast */
-.p-toast-message-info {
-    border-left: 4px solid #2563eb !important;
-    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.2) !important;
+/* Warning - Amarillo */
+.p-toast .p-toast-message-warn {
+    border: 1px solid rgba(234, 179, 8, 0.25) !important;
+    outline: 1px solid rgba(234, 179, 8, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.5), 0 4px 20px rgba(234, 179, 8, 0.4), 0 0 40px rgba(234, 179, 8, 0.3) !important;
 }
 
-.dark .p-toast-message-info {
-    border-left: 4px solid #3b82f6 !important;
-    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3) !important;
+/* Error - Rojo */
+.p-toast .p-toast-message-error {
+    border: 1px solid rgba(239, 68, 68, 0.25) !important;
+    outline: 1px solid rgba(239, 68, 68, 0.4) !important;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.5), 0 4px 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.3) !important;
 }
 
-/* Warning Toast */
-.p-toast-message-warn {
-    border-left: 4px solid #ca8a04 !important;
-    box-shadow: 0 4px 14px 0 rgba(202, 138, 4, 0.2) !important;
+/* Light mode adjustments */
+body:not(.dark) .p-toast .p-toast-message-success {
+    border: 1px solid rgba(22, 163, 74, 0.2) !important;
+    outline: 1px solid rgba(22, 163, 74, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.3), 0 4px 20px rgba(22, 163, 74, 0.25), 0 0 30px rgba(22, 163, 74, 0.2) !important;
 }
 
-.dark .p-toast-message-warn {
-    border-left: 4px solid #eab308 !important;
-    box-shadow: 0 4px 14px 0 rgba(234, 179, 8, 0.3) !important;
+body:not(.dark) .p-toast .p-toast-message-info {
+    border: 1px solid rgba(37, 99, 235, 0.2) !important;
+    outline: 1px solid rgba(37, 99, 235, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3), 0 4px 20px rgba(37, 99, 235, 0.25), 0 0 30px rgba(37, 99, 235, 0.2) !important;
 }
 
-/* Error Toast */
-.p-toast-message-error {
-    border-left: 4px solid #dc2626 !important;
-    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.2) !important;
+body:not(.dark) .p-toast .p-toast-message-warn {
+    border: 1px solid rgba(202, 138, 4, 0.2) !important;
+    outline: 1px solid rgba(202, 138, 4, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(202, 138, 4, 0.3), 0 4px 20px rgba(202, 138, 4, 0.25), 0 0 30px rgba(202, 138, 4, 0.2) !important;
 }
 
-.dark .p-toast-message-error {
-    border-left: 4px solid #ef4444 !important;
-    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.3) !important;
+body:not(.dark) .p-toast .p-toast-message-error {
+    border: 1px solid rgba(220, 38, 38, 0.2) !important;
+    outline: 1px solid rgba(220, 38, 38, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.3), 0 4px 20px rgba(220, 38, 38, 0.25), 0 0 30px rgba(220, 38, 38, 0.2) !important;
 }
