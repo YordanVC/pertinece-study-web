@@ -206,6 +206,15 @@ body:has(.login-page) {
   position: relative;
 }
 
+.p-password input,
+.p-inputtext {
+  transition: none !important;
+}
+
+.p-password .p-password-toggle-icon {
+  transition: none !important;
+}
+
 /* Ocultar scrollbar pero mantener scroll funcional */
 .scrollbar-none {
     scrollbar-width: none; /* Firefox */

@@ -4,11 +4,12 @@ import { MainLayout } from './components/Layout/MainLayout'
 import { ResultadosPage } from './pages/Resultados/ResultadosPage'
 import { NotFoundPage } from './pages/NotFound/NotFoundPage'
 import LoginPage from './pages/Login/LoginPage'
+import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
 
   return (
-    <>
+    <ThemeProvider>
       <BrowserRouter>
         <Routes>
           {/* Ruta de Login sin Layout */}
@@ -24,7 +25,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   )
 }
 

@@ -7,6 +7,8 @@ import { OverlayPanel } from './OverlayPanel';
 import bgImage from '../../assets/bg-3.jpg';
 import logoSvg from '../../assets/UgLettersOnly.svg';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
+import { Toggle } from '../../components/Toggle/Toggle';
 
 interface LoginFormData {
     username: string;
@@ -24,6 +26,7 @@ interface RegisterFormData {
 const LoginPage = () => {
     const [isRegisterActive, setIsRegisterActive] = useState(false);
     const navigate = useNavigate();
+    const { isDarkMode, toggleTheme } = useTheme();
 
     // React Hook Forms para Login
     const {
@@ -65,26 +68,54 @@ const LoginPage = () => {
         // Aquí irá la lógica de registro
     };
 
+    // Estilos dinámicos para inputs según el tema
+    const inputClass = (hasError: boolean) => {
+        const baseClasses = 'w-full p-[13px_50px_13px_20px] rounded-lg border-none text-base font-medium placeholder:font-normal transition-none';
+        const themeClasses = isDarkMode
+            ? 'bg-gray-700 text-gray-100 placeholder:text-gray-400'
+            : 'bg-[#f0f0f0] text-[#333] placeholder:text-[#888]';
+        const errorClass = hasError ? 'border-red-500' : '';
+        return `${baseClasses} ${themeClasses} ${errorClass}`;
+    };
+
+    const iconClass = `absolute right-5 top-1/2 -translate-y-1/2 text-xl transition-none ${isDarkMode ? 'text-gray-300' : 'text-[#333]'}`;
+
     return (
         <div
-            className="min-h-screen w-full flex justify-center items-center p-5 fixed inset-0"
+            className={`min-h-screen w-full flex justify-center items-center p-5 fixed inset-0 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : ''}`}
             style={{
-                backgroundImage: `url(${bgImage})`,
+                backgroundImage: isDarkMode ? 'none' : `url(${bgImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
             }}
         >
+            {/* Toggle de tema en la esquina superior derecha */}
+            <div className="absolute top-4 right-4 z-50">
+                <Toggle
+                    checked={isDarkMode}
+                    onChange={toggleTheme}
+                    checkedIcon="pi-moon"
+                    uncheckedIcon="pi-sun"
+                    checkedBgColor="from-indigo-400 to-indigo-600"
+                    uncheckedBgColor="from-yellow-400 to-yellow-600"
+                    checkedIconColor="text-blue-800"
+                    uncheckedIconColor="text-green-800"
+                />
+            </div>
+
             {/*Container*/}
-            <div className={`relative w-[950px] h-[680px] bg-white rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full contain-layout
-                max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)]`}>
+            <div
+                key={`login-container-${isDarkMode}`}
+                className={`relative w-[950px] h-[680px] rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full contain-layout
+                max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)] ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
 
                 {/*------------------------FORM LOGIN-----------------------------------*/}
-                <div className={`absolute w-1/2 h-full right-0 bg-white flex items-center text-[#333] text-center p-[35px] transition-transform duration-[600ms] ease-in-out will-change-transform z-[1]
+                <div className={`absolute w-1/2 h-full right-0 flex items-center text-center p-[35px] transition-all duration-[600ms] ease-in-out will-change-transform z-[1]
                     ${isRegisterActive ? 'delay-[700ms] translate-x-[-200%]' : 'delay-[700ms] translate-x-0'}
                     max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-6 max-[650px]:bottom-0 max-[650px]:!right-0 max-[650px]:!translate-x-0 max-[650px]:!z-[1]
                     ${isRegisterActive ? 'max-[650px]:!translate-y-[100svh] max-[650px]:!invisible max-[650px]:!delay-[300ms]' : 'max-[650px]:!translate-y-0 max-[650px]:!visible max-[650px]:!delay-[700ms]'}
-                    max-[400px]:h1p-5`}>
+                    max-[400px]:h1p-5 ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-[#333]'}`}>
                     <form onSubmit={handleSubmitLogin(onLogin)} className="w-full p-2 scrollbar-none overflow-y-auto max-h-full">
                         <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>SISTEMA DE ESTUDIO DE PERTINENCIA</h1>
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)]">
@@ -96,11 +127,10 @@ const LoginPage = () => {
                             <InputText
                                 type="text"
                                 placeholder="Nombre de usuario"
-                                className={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium placeholder:text-[#888] placeholder:font-normal ${errorsLogin.username ? '!border-red-500' : ''
-                                    }`}
+                                className={inputClass(!!errorsLogin.username)}
                                 {...registerLogin('username', { required: 'El nombre de usuario es requerido' })}
                             />
-                            <i className="pi pi-user absolute right-5 top-1/2 -translate-y-1/2 text-xl text-[#333]"></i>
+                            <i className={`pi pi-user ${iconClass}`}></i>
                             {errorsLogin.username && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsLogin.username.message}</small>
                             )}
@@ -118,8 +148,7 @@ const LoginPage = () => {
                                             placeholder="Contraseña"
                                             toggleMask
                                             feedback={false}
-                                            inputClassName={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium ${fieldState.error ? '!border-red-500' : ''
-                                                }`}
+                                            inputClassName={inputClass(!!fieldState.error)}
                                         />
                                         {fieldState.error && (
                                             <small className="text-red-500 block text-left mt-1 text-sm">
@@ -137,12 +166,12 @@ const LoginPage = () => {
                 </div>
 
                 {/*------------------------FORM REGISTRO-----------------------------------*/}
-                <div className={`absolute w-1/2 h-full left-0 bg-white flex items-center text-[#333] text-center p-[35px] transition-all duration-[600ms] ease-in-out will-change-transform z-[1]
+                <div className={`absolute w-1/2 h-full left-0 flex items-center text-center p-[35px] transition-all duration-[600ms] ease-in-out will-change-transform z-[1]
                     ${isRegisterActive ? 'opacity-100 translate-x-0 delay-[700ms]' : 'opacity-0 translate-x-[200%] delay-[300ms]'}
                     max-[650px]:!w-full max-[650px]:!h-[calc(100%-20svh)] max-[650px]:p-4 max-[650px]:!right-0 max-[650px]:!left-auto max-[650px]:!pb-6 max-[650px]:top-0 max-[650px]:!translate-x-0
                     ${isRegisterActive ? 'max-[650px]:!opacity-100 max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]' : 'max-[650px]:!opacity-0 max-[650px]:!translate-y-[-100svh] max-[650px]:!delay-[300ms]'}
-                    max-[400px]:p-3`}>
-                    <form onSubmit={handleSubmitSignup(onRegister)} className="w-full overflow-y-auto max-h-full scrollbar-none">
+                    max-[400px]:p-3 ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-[#333]'}`}>
+                    <form onSubmit={handleSubmitSignup(onRegister)} className="w-full p-2 overflow-y-auto max-h-full scrollbar-none">
                         <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>SISTEMA DE ESTUDIO DE PERTINENCIA</h1>
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.5rem,1.5vw,1rem)]">
                             <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-[clamp(3.5rem,10vw,5rem)]" />
@@ -153,11 +182,10 @@ const LoginPage = () => {
                             <InputText
                                 type="text"
                                 placeholder="Usuario"
-                                className={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium placeholder:text-[#888] placeholder:font-normal ${errorsSignup.username ? '!border-red-500' : ''
-                                    }`}
+                                className={inputClass(!!errorsSignup.username)}
                                 {...registerSignup('username', { required: 'El usuario es requerido' })}
                             />
-                            <i className="pi pi-user absolute right-5 top-1/2 -translate-y-1/2 text-xl text-[#333]"></i>
+                            <i className={`pi pi-user ${iconClass}`}></i>
                             {errorsSignup.username && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.username.message}</small>
                             )}
@@ -167,11 +195,10 @@ const LoginPage = () => {
                             <InputText
                                 type="text"
                                 placeholder="Nombres"
-                                className={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium placeholder:text-[#888] placeholder:font-normal ${errorsSignup.name ? '!border-red-500' : ''
-                                    }`}
+                                className={inputClass(!!errorsSignup.name)}
                                 {...registerSignup('name', { required: 'El nombre es requerido' })}
                             />
-                            <i className="pi pi-id-card absolute right-5 top-1/2 -translate-y-1/2 text-xl text-[#333]"></i>
+                            <i className={`pi pi-id-card ${iconClass}`}></i>
                             {errorsSignup.name && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.name.message}</small>
                             )}
@@ -181,11 +208,10 @@ const LoginPage = () => {
                             <InputText
                                 type="text"
                                 placeholder="Apellidos"
-                                className={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium placeholder:text-[#888] placeholder:font-normal ${errorsSignup.lastname ? '!border-red-500' : ''
-                                    }`}
+                                className={inputClass(!!errorsSignup.lastname)}
                                 {...registerSignup('lastname', { required: 'El apellido es requerido' })}
                             />
-                            <i className="pi pi-id-card absolute right-5 top-1/2 -translate-y-1/2 text-xl text-[#333]"></i>
+                            <i className={`pi pi-id-card ${iconClass}`}></i>
                             {errorsSignup.lastname && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.lastname.message}</small>
                             )}
@@ -195,8 +221,7 @@ const LoginPage = () => {
                             <InputText
                                 type="email"
                                 placeholder="Correo electrónico"
-                                className={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium placeholder:text-[#888] placeholder:font-normal ${errorsSignup.email ? '!border-red-500' : ''
-                                    }`}
+                                className={inputClass(!!errorsSignup.email)}
                                 {...registerSignup('email', {
                                     required: 'El correo es requerido',
                                     pattern: {
@@ -205,7 +230,7 @@ const LoginPage = () => {
                                     }
                                 })}
                             />
-                            <i className="pi pi-envelope absolute right-5 top-1/2 -translate-y-1/2 text-xl text-[#333]"></i>
+                            <i className={`pi pi-envelope ${iconClass}`}></i>
                             {errorsSignup.email && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.email.message}</small>
                             )}
@@ -223,8 +248,7 @@ const LoginPage = () => {
                                             placeholder="Contraseña"
                                             toggleMask
                                             feedback={false}
-                                            inputClassName={`w-full !p-[13px_50px_13px_20px] !bg-[#f0f0f0] !rounded-lg !border-none !text-base !text-[#333] !font-medium ${fieldState.error ? '!border-red-500' : ''
-                                                }`}
+                                            inputClassName={inputClass(!!fieldState.error)}
                                         />
                                         {fieldState.error && (
                                             <small className="text-red-500 block text-left mt-1 text-sm">

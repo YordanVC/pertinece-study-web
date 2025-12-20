@@ -1,24 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Sidebar } from '../Sidebar/SideBar';
 import { mainMenuItems } from '../../config/menuItems';
 import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
+import { useTheme } from '../../context/ThemeContext';
 
 export const MainLayout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    useEffect(() => {
-        // Aplicar/remover clase dark al documento
-        if (isDarkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [isDarkMode]);
+    const { isDarkMode, toggleTheme } = useTheme();
 
     return (
         <div className={`flex min-h-screen w-full overflow-x-clip transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-ug-gray'}`}>
@@ -55,7 +47,7 @@ export const MainLayout = () => {
                     {!isMobileMenuOpen && (
                         <Toggle
                             checked={isDarkMode}
-                            onChange={setIsDarkMode}
+                            onChange={toggleTheme}
                             checkedIcon="pi-moon"
                             uncheckedIcon="pi-sun"
                             checkedBgColor="from-indigo-400 to-indigo-600"
