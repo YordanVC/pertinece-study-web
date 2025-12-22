@@ -224,3 +224,124 @@ body:has(.login-page) {
 .scrollbar-none::-webkit-scrollbar {
     display: none; /* Chrome, Safari y Opera */
 }
+
+/* ==================== ESTILOS PARA QUILL EDITOR EN MODO OSCURO ==================== */
+
+/* Contenedor principal del editor */
+.dark .p-editor-container {
+    background-color: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+/* Toolbar del editor */
+.dark .p-editor-toolbar,
+.dark .ql-toolbar {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+}
+
+/* Botones de la toolbar */
+.dark .ql-toolbar button,
+.dark .ql-toolbar .ql-picker-label {
+    color: #e5e7eb !important;
+}
+
+.dark .ql-toolbar button:hover,
+.dark .ql-toolbar .ql-picker-label:hover {
+    color: #06b6d4 !important;
+}
+
+.dark .ql-toolbar button.ql-active,
+.dark .ql-toolbar .ql-picker-label.ql-active {
+    color: #06b6d4 !important;
+}
+
+/* Iconos SVG de la toolbar */
+.dark .ql-toolbar .ql-stroke {
+    stroke: #e5e7eb !important;
+}
+
+.dark .ql-toolbar button:hover .ql-stroke,
+.dark .ql-toolbar button.ql-active .ql-stroke {
+    stroke: #06b6d4 !important;
+}
+
+.dark .ql-toolbar .ql-fill {
+    fill: #e5e7eb !important;
+}
+
+.dark .ql-toolbar button:hover .ql-fill,
+.dark .ql-toolbar button.ql-active .ql-fill {
+    fill: #06b6d4 !important;
+}
+
+/* Dropdowns de la toolbar */
+.dark .ql-toolbar .ql-picker-options {
+    background-color: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+.dark .ql-toolbar .ql-picker-item {
+    color: #e5e7eb !important;
+}
+
+.dark .ql-toolbar .ql-picker-item:hover {
+    background-color: #374151 !important;
+    color: #06b6d4 !important;
+}
+
+/* Área de contenido del editor */
+.dark .p-editor-content,
+.dark .ql-container {
+    background-color: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+.dark .ql-editor {
+    background-color: #1f2937 !important;
+    color: #e5e7eb !important;
+}
+
+/* Placeholder del editor */
+.dark .ql-editor.ql-blank::before {
+    color: #6b7280 !important;
+}
+
+/* Selección de texto en el editor */
+.dark .ql-editor ::selection {
+    background-color: #0891b2 !important;
+    color: #ffffff !important;
+}
+
+/* Bordes cuando está enfocado */
+.dark .p-editor-container:focus-within {
+    border-color: #06b6d4 !important;
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* Estilos para el contenido formateado dentro del editor */
+.dark .ql-editor h1,
+.dark .ql-editor h2,
+.dark .ql-editor h3,
+.dark .ql-editor h4 {
+    color: #f3f4f6 !important;
+}
+
+.dark .ql-editor strong {
+    color: #f3f4f6 !important;
+}
+
+.dark .ql-editor a {
+    color: #06b6d4 !important;
+}
+
+.dark .ql-editor blockquote {
+    border-left-color: #4b5563 !important;
+    color: #d1d5db !important;
+}
+
+.dark .ql-editor code,
+.dark .ql-editor pre {
+    background-color: #111827 !important;
+    color: #10b981 !important;
+}
