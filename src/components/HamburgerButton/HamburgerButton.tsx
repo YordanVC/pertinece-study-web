@@ -21,7 +21,7 @@ export const HamburgerButton = ({
     return (
         <button
             onClick={onClick}
-            className={`lg:hidden fixed top-2 left-2 z-50 p-3 bg-ug-blue text-white rounded-lg shadow-lg hover:bg-ug-blue-dark transition-all hover:scale-105 active:scale-95 ${className}`}
+            className={`lg:hidden fixed top-3 left-2 z-50 p-3 bg-ug-blue text-white rounded-lg shadow-lg hover:bg-ug-blue-dark transition-all hover:scale-105 active:scale-95 ${className}`}
             aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isOpen}
         >
