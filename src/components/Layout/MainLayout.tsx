@@ -6,7 +6,13 @@ import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
 import { useTheme } from '../../context/ThemeContext';
-import { MENSAJE_FOOTER, TITULO_HEADER } from '../../utils/constants';
+import {
+    MENSAJE_FOOTER,
+    TITULO_HEADER,
+    URL_PERFIL_FB,
+    URL_PERFIL_IG,
+    URL_PERFIL_YT
+} from '../../utils/constants';
 export const MainLayout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -34,7 +40,7 @@ export const MainLayout = () => {
             <main className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarCollapsed ? 'lg:ml-20' : 'lg:ml-70'
                 }`}>
                 <header className={`w-full p-4 h-18 border-b flex items-center justify-between px-4 lg:px-8 shadow-sm transition-colors duration-300 border-b ${isDarkMode
-                    ? 'bg-gray-800 border-gray-600'
+                    ? ' dark bg-gray-800 border-gray-700'
                     : 'bg-white border-gray-200'
                     }`}>
                     <h1 className={`text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold ${isMobileMenuOpen ? 'ml-0' : 'ml-12'}  lg:ml-0 transition-colors duration-300 leading-tight ${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'
@@ -59,22 +65,22 @@ export const MainLayout = () => {
                 </header>
                 <section
                     className="
-                        relative flex-1 overflow-y-auto
-                        mt-0 p-4 sm:p-6 lg:p-8
-                        transition-colors duration-300
-                        bg-cover bg-center bg-no-repeat bg-fixed
-                    "
+                            relative flex-1 overflow-y-auto
+                            mt-0 p-4 sm:p-4 lg:p-8
+                            transition-colors duration-300
+                            bg-cover bg-center bg-no-repeat bg-fixed
+                        "
                     style={{ backgroundImage: `url(${bgImage})` }}
                 >
                     {/* Overlay */}
                     <div
                         className={`
-                        absolute inset-0
-                        transition-colors duration-300
-                        ${isDarkMode
+                            absolute inset-0
+                            transition-colors duration-300
+                            ${isDarkMode
                                 ? 'bg-black/60 backdrop-blur-sm'
                                 : 'bg-white/40'}
-                        `}
+                            `}
                     />
                     {/* Contenido */}
                     <div className="relative z-10">
@@ -99,7 +105,7 @@ export const MainLayout = () => {
                         <div className="flex items-center gap-4">
                             <IconButton
                                 icon="pi-facebook"
-                                href="https://www.facebook.com/UdeGuayaquil"
+                                href={URL_PERFIL_FB}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="social"
@@ -109,7 +115,7 @@ export const MainLayout = () => {
                             />
                             <IconButton
                                 icon="pi-instagram"
-                                href="https://www.instagram.com/universidad_guayaquil/"
+                                href={URL_PERFIL_IG}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="social"
@@ -119,7 +125,7 @@ export const MainLayout = () => {
                             />
                             <IconButton
                                 icon="pi-youtube"
-                                href="https://www.youtube.com/@UdeGuayaquil"
+                                href={URL_PERFIL_YT}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="social"

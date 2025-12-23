@@ -10,6 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { Toggle } from '../../components/Toggle/Toggle';
 import { useToast } from '../../context/ToastContext';
+import {
+    BUTTON_TEXT_LOGIN_A_REGISTRO,
+    BUTTON_TEXT_REGISTRO_A_LOGIN,
+    HELPER_TEXT_LOGIN_A_REGISTRO,
+    HELPER_TEXT_REGISTRO_A_LOGIN,
+    MENSAJE_BIENVENIDA_LOGIN,
+    TITULO_LOGIN
+} from '../../utils/constants';
 
 interface LoginFormData {
     username: string;
@@ -122,7 +130,7 @@ const LoginPage = () => {
                     ${isRegisterActive ? 'max-[650px]:translate-y-[100svh]! max-[650px]:invisible! max-[650px]:delay-300!' : 'max-[650px]:translate-y-0! max-[650px]:visible! max-[650px]:delay-700!'}
                     max-[400px]:h1p-5 ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-[#333]'}`}>
                     <form onSubmit={handleSubmitLogin(onLogin)} className="w-full p-2 scrollbar-none overflow-y-auto max-h-full">
-                        <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>SISTEMA DE ESTUDIO DE PERTINENCIA</h1>
+                        <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>{TITULO_LOGIN}</h1>
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)]">
                             <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-[clamp(4rem,12vw,6rem)]" />
                         </div>
@@ -177,7 +185,7 @@ const LoginPage = () => {
                     ${isRegisterActive ? 'max-[650px]:!opacity-100 max-[650px]:!translate-y-0 max-[650px]:!delay-[700ms]' : 'max-[650px]:!opacity-0 max-[650px]:!translate-y-[-100svh] max-[650px]:!delay-[300ms]'}
                     max-[400px]:p-3 ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-[#333]'}`}>
                     <form onSubmit={handleSubmitSignup(onRegister)} className="w-full p-2 overflow-y-auto max-h-full scrollbar-none">
-                        <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>SISTEMA DE ESTUDIO DE PERTINENCIA</h1>
+                        <h1 className='font-bold text-3xl mb-3 max-[400px]:text-2xl'>{TITULO_LOGIN}</h1>
                         <div className="flex justify-center mb-4 max-[650px]:mb-[clamp(0.5rem,1.5vw,1rem)]">
                             <img src={logoSvg} alt="Universidad de Guayaquil" className="h-16 w-auto max-[650px]:h-[clamp(3.5rem,10vw,5rem)]" />
                         </div>
@@ -273,18 +281,18 @@ const LoginPage = () => {
                 {/*------------------------OVERLAYS-----------------------------------*/}
                 <div className="absolute w-full h-full pointer-events-none contain-layout">
                     <OverlayPanel
-                        title="¡Bienvenido al sistema!"
-                        description="¿No tienes una cuenta?"
-                        buttonText="Registro"
+                        title={MENSAJE_BIENVENIDA_LOGIN}
+                        description={HELPER_TEXT_LOGIN_A_REGISTRO}
+                        buttonText={BUTTON_TEXT_LOGIN_A_REGISTRO}
                         onClick={() => setIsRegisterActive(true)}
                         isActive={isRegisterActive}
                         position="left"
                     />
 
                     <OverlayPanel
-                        title="¡Bienvenido al sistema!"
-                        description="¿Ya tienes una cuenta?"
-                        buttonText="Login"
+                        title={MENSAJE_BIENVENIDA_LOGIN}
+                        description={HELPER_TEXT_REGISTRO_A_LOGIN}
+                        buttonText={BUTTON_TEXT_REGISTRO_A_LOGIN}
                         onClick={() => setIsRegisterActive(false)}
                         isActive={isRegisterActive}
                         position="right"
