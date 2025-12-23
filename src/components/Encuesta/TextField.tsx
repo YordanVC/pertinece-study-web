@@ -3,7 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 
-interface TextFieldProps {
+export interface TextFieldProps {
     /** Etiqueta del campo */
     label: string;
 
