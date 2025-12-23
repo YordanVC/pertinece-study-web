@@ -5,6 +5,7 @@ import { mainMenuItems } from '../../config/menuItems';
 import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
+import { HamburgerButton } from '../HamburgerButton/HamburgerButton';
 import { useTheme } from '../../context/ThemeContext';
 import {
     MENSAJE_FOOTER,
@@ -21,13 +22,10 @@ export const MainLayout = () => {
     return (
         <div className={`flex min-h-screen w-full overflow-x-clip transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-ug-gray'}`}>
             {/* Botón hamburguesa para móvil */}
-            <button
+            <HamburgerButton
+                isOpen={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden fixed top-2 left-2 z-50 p-3 bg-ug-blue text-white rounded-lg shadow-lg hover:bg-ug-blue-dark transition-all hover:scale-105 active:scale-95"
-                aria-label="Toggle menu"
-            >
-                <i className={`pi ${isMobileMenuOpen ? 'pi-times' : 'pi-bars'} text-xl`}></i>
-            </button>
+            />
             <Sidebar
                 menuItems={mainMenuItems}
                 logoAlt="UG Logo"
@@ -140,3 +138,4 @@ export const MainLayout = () => {
         </div>
     );
 };
+
