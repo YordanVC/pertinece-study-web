@@ -6,6 +6,7 @@ import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
 import { useTheme } from '../../context/ThemeContext';
+import { MENSAJE_FOOTER, TITULO_HEADER } from '../../utils/constants';
 export const MainLayout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -30,15 +31,15 @@ export const MainLayout = () => {
                 onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
                 isDarkMode={isDarkMode}
             />
-            <main className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarCollapsed ? 'lg:ml-20' : 'lg:ml-80'
+            <main className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarCollapsed ? 'lg:ml-20' : 'lg:ml-70'
                 }`}>
-                <header className={`w-full p-4 h-16 border-b flex items-center justify-between px-4 lg:px-8 shadow-sm transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-800 border-gray-700'
+                <header className={`w-full p-4 h-18 border-b flex items-center justify-between px-4 lg:px-8 shadow-sm transition-colors duration-300 border-b ${isDarkMode
+                    ? 'bg-gray-800 border-gray-600'
                     : 'bg-white border-gray-200'
                     }`}>
                     <h1 className={`text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold ${isMobileMenuOpen ? 'ml-0' : 'ml-12'}  lg:ml-0 transition-colors duration-300 leading-tight ${isDarkMode ? 'text-cyan-400' : 'text-ug-blue'
                         }`}>
-                        Sistema Estudio de Pertinencia UG
+                        {TITULO_HEADER}
                     </h1>
 
                     {/* Toggle de modo oscuro/claro */}
@@ -91,7 +92,7 @@ export const MainLayout = () => {
                         {/* Copyright */}
                         <div className={` text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
                             }`}>
-                            © 2025 Universidad de Guayaquil. Todos los derechos reservados.
+                            {MENSAJE_FOOTER}
                         </div>
 
                         {/* Redes Sociales */}

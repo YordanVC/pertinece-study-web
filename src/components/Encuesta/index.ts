@@ -8,4 +8,3 @@ export type { RadioButtonFieldProps, RadioOption } from './RadioButtonField';
 export { CheckboxField } from './CheckboxField';
 export type { CheckboxFieldProps, CheckboxOption } from './CheckboxField';
 
-export { EncuestaExample } from './EncuestaExample';

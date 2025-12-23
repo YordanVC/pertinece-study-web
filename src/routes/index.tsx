@@ -4,7 +4,6 @@ import { ResultadosPage } from '../pages/Resultados/ResultadosPage';
 import { NotFoundPage } from '../pages/NotFound/NotFoundPage';
 import LoginPage from '../pages/Login/LoginPage';
 import { NuevoEstudioPage } from '../pages/NuevoEstudio/NuevoEstudioPage';
-import { EncuestaExample } from '../components/Encuesta/EncuestaExample';
 import { ROUTES } from './routes';
 
 /**
@@ -20,9 +19,7 @@ export const AppRoutes = () => {
             <Route path={ROUTES.HOME} element={<MainLayout />}>
                 <Route index element={<div>Página de Inicio / Mis Encuestas</div>} />
                 <Route path={ROUTES.CREATE_STUDY} element={<NuevoEstudioPage />} />
-                <Route path={ROUTES.ENCUESTA_EXAMPLE} element={<EncuestaExample />} />
                 <Route path={ROUTES.RESULTS} element={<ResultadosPage />} />
-
                 {/* Ruta catch-all para páginas no encontradas - dentro del layout */}
                 <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
             </Route>

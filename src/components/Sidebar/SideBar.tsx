@@ -1,5 +1,4 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import defaultLogo from '../../assets/UgHorizontalColor.svg';
 import ugLettersOnly from '../../assets/UgLettersOnly.svg';
 import type { SidebarProps } from '../../types/sidebar.types';
 import { Tooltip } from '../Tooltip/Tooltip';
@@ -11,7 +10,7 @@ import { useToast } from '../../context/ToastContext';
 
 export const Sidebar = ({
     menuItems,
-    logoSrc = defaultLogo,
+    logoSrc = ugLettersOnly,
     logoAlt = 'Logo',
     isMobileMenuOpen = false,
     onMobileMenuClose,
@@ -53,13 +52,13 @@ export const Sidebar = ({
 
             {/* Botón de colapsar/expandir para desktop - FUERA del sidebar */}
             <div
-                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60] transition-all duration-300 ease-in-out ${isCollapsed ? 'left-20' : 'left-80'}`}
+                className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[60] transition-all duration-300 ease-in-out ${isCollapsed ? 'left-20' : 'left-70'}`}
                 style={{ marginLeft: '-0.875rem' }} // Adjusted for smaller button (1.75rem / 2)
             >
                 <PrimeButton
                     icon={`pi ${isCollapsed ? 'pi-chevron-right' : 'pi-chevron-left'}`}
                     onClick={onToggleCollapse}
-                    className="w-7! h-7! !rounded-full! bg-ug-blue! border-none! text-white! p-0! shadow-md hover:w-10! hover:h-10! hover:shadow-xl transition-all! duration-200! ring-2 ring-white dark:ring-gray-900"
+                    className="w-7! h-7! !rounded-full! bg-ug-blue! border-none! text-white! p-0! shadow-md hover:w-10! hover:h-10! hover:shadow-xl transition-all! duration-200! ring-2 ring-gray-200"
                     aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
                     pt={{
                         root: { className: 'flex justify-center items-center' },
@@ -73,14 +72,14 @@ export const Sidebar = ({
                 fixed inset-y-0 left-0 z-40
                 h-screen flex flex-col
                 transform transition-all duration-300 ease-in-out
-                ${isMobileMenuOpen ? 'translate-x-0 w-80 sm:w-96' : '-translate-x-full w-0 lg:translate-x-0'}
-                ${isCollapsed ? 'lg:w-20' : 'lg:w-80'}
+                ${isMobileMenuOpen ? 'translate-x-0 w-70 sm:w-96' : '-translate-x-full w-0 lg:translate-x-0'}
+                ${isCollapsed ? 'lg:w-20' : 'lg:w-70'}
                 ${isDarkMode ? 'bg-[#1e293b] border-r border-gray-600' : 'bg-white border-r border-gray-200'}
             `}
                 style={{ overflowY: 'auto', overflowX: 'hidden' }}
             >
 
-                <div className={` mt-2 h-16 flex justify-center items-center transition-all duration-300 mb-2 ${isCollapsed ? 'lg:p-3' : 'p-0 lg:p-6'}`}>
+                <div className={` mt-2 h-16 flex justify-center items-center transition-all duration-300 mb-2 border-b ${isDarkMode ? 'border-gray-600' : 'border-gray-200'} ${isCollapsed ? 'lg:p-3' : 'p-0 lg:p-6'}`}>
                     {isCollapsed ? (
                         <div className={`w-16 h-16 flex lg:flex items-center justify-center rounded-xl transition-all duration-300 ${isDarkMode ? 'bg-gray-1000/50 shadow-inner' : 'bg-transparent'
                             }`}>
@@ -104,15 +103,13 @@ export const Sidebar = ({
                                 />
                             </div>
                             {/* Logo completo para desktop */}
-                            <div className={`hidden lg:flex items-center justify-center transition-all duration-300 ${isDarkMode ? 'bg-gray-700/30 px-4 py-2 rounded-lg' : 'bg-transparent'
-                                }`}>
-                                <img
-                                    src={logoSrc}
-                                    alt={logoAlt}
-                                    className={`h-12 transition-all duration-300 ${isDarkMode ? 'brightness-125 contrast-110' : ''
-                                        }`}
-                                />
-                            </div>
+
+                            <img
+                                src={ugLettersOnly}
+                                alt={logoAlt}
+                                className={`h-12 hidden lg:block transition-all duration-300 ${isDarkMode ? 'brightness-125 contrast-110' : ''
+                                    }`}
+                            />
                         </>
                     )}
                 </div>
