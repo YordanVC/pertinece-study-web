@@ -136,33 +136,37 @@ const LoginPage = () => {
                         </div>
                         <h1 className="text-2xl mb-2 max-[650px]:text-[clamp(1.5rem,5vw,2rem)] max-[650px]:mb-[clamp(0.75rem,2vw,1.25rem)] mt-0 max-[400px]:text-xl">Iniciar sesión</h1>
 
-                        <div className="relative my-5 max-[650px]:my-5">
-                            <InputText
-                                type="text"
-                                placeholder="Nombre de usuario"
-                                className={inputClass(!!errorsLogin.username)}
-                                {...registerLogin('username', { required: 'El nombre de usuario es requerido' })}
-                            />
-                            <i className={`pi pi-user ${iconClass}`}></i>
+                        <div className="my-5 max-[650px]:my-5">
+                            <div className="relative">
+                                <InputText
+                                    type="text"
+                                    placeholder="Nombre de usuario"
+                                    className={inputClass(!!errorsLogin.username)}
+                                    {...registerLogin('username', { required: 'El nombre de usuario es requerido' })}
+                                />
+                                <i className={`pi pi-user ${iconClass}`}></i>
+                            </div>
                             {errorsLogin.username && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsLogin.username.message}</small>
                             )}
                         </div>
 
-                        <div className="relative my-4 max-[650px]:my-2">
+                        <div className="my-4 max-[650px]:my-2">
                             <Controller
                                 name="password"
                                 control={controlLogin}
                                 rules={{ required: 'La contraseña es requerida' }}
                                 render={({ field, fieldState }) => (
                                     <>
-                                        <Password
-                                            {...field}
-                                            placeholder="Contraseña"
-                                            toggleMask
-                                            feedback={false}
-                                            inputClassName={inputClass(!!fieldState.error)}
-                                        />
+                                        <div className="relative">
+                                            <Password
+                                                {...field}
+                                                placeholder="Contraseña"
+                                                toggleMask
+                                                feedback={false}
+                                                inputClassName={inputClass(!!fieldState.error)}
+                                            />
+                                        </div>
                                         {fieldState.error && (
                                             <small className="text-red-500 block text-left mt-1 text-sm">
                                                 {fieldState.error.message}
@@ -191,78 +195,88 @@ const LoginPage = () => {
                         </div>
                         <h1 className="text-2xl mb-2 max-[650px]:text-[clamp(1.5rem,5vw,2rem)] max-[400px]:text-[30px]">Registro</h1>
 
-                        <div className="relative my-4 max-[650px]:my-2">
-                            <InputText
-                                type="text"
-                                placeholder="Usuario"
-                                className={inputClass(!!errorsSignup.username)}
-                                {...registerSignup('username', { required: 'El usuario es requerido' })}
-                            />
-                            <i className={`pi pi-user ${iconClass}`}></i>
+                        <div className="my-4 max-[650px]:my-2">
+                            <div className="relative">
+                                <InputText
+                                    type="text"
+                                    placeholder="Usuario"
+                                    className={inputClass(!!errorsSignup.username)}
+                                    {...registerSignup('username', { required: 'El usuario es requerido' })}
+                                />
+                                <i className={`pi pi-user ${iconClass}`}></i>
+                            </div>
                             {errorsSignup.username && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.username.message}</small>
                             )}
                         </div>
 
-                        <div className="relative my-4 max-[650px]:my-2">
-                            <InputText
-                                type="text"
-                                placeholder="Nombres"
-                                className={inputClass(!!errorsSignup.name)}
-                                {...registerSignup('name', { required: 'El nombre es requerido' })}
-                            />
-                            <i className={`pi pi-id-card ${iconClass}`}></i>
+                        <div className="my-4 max-[650px]:my-2">
+                            <div className="relative">
+                                <InputText
+                                    type="text"
+                                    placeholder="Nombres"
+                                    className={inputClass(!!errorsSignup.name)}
+                                    {...registerSignup('name', { required: 'El nombre es requerido' })}
+                                />
+                                <i className={`pi pi-id-card ${iconClass}`}></i>
+                            </div>
                             {errorsSignup.name && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.name.message}</small>
                             )}
                         </div>
 
-                        <div className="relative my-4 max-[650px]:my-2">
-                            <InputText
-                                type="text"
-                                placeholder="Apellidos"
-                                className={inputClass(!!errorsSignup.lastname)}
-                                {...registerSignup('lastname', { required: 'El apellido es requerido' })}
-                            />
-                            <i className={`pi pi-id-card ${iconClass}`}></i>
+                        <div className="my-4 max-[650px]:my-2">
+                            <div className="relative">
+                                <InputText
+                                    type="text"
+                                    placeholder="Apellidos"
+                                    className={inputClass(!!errorsSignup.lastname)}
+                                    {...registerSignup('lastname', { required: 'El apellido es requerido' })}
+                                />
+                                <i className={`pi pi-id-card ${iconClass}`}></i>
+                            </div>
                             {errorsSignup.lastname && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.lastname.message}</small>
                             )}
                         </div>
 
-                        <div className="relative my-4 max-[650px]:my-2">
-                            <InputText
-                                type="email"
-                                placeholder="Correo electrónico"
-                                className={inputClass(!!errorsSignup.email)}
-                                {...registerSignup('email', {
-                                    required: 'El correo es requerido',
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                        message: 'Correo electrónico inválido'
-                                    }
-                                })}
-                            />
-                            <i className={`pi pi-envelope ${iconClass}`}></i>
+                        <div className="my-4 max-[650px]:my-2">
+                            <div className="relative">
+                                <InputText
+                                    type="email"
+                                    placeholder="Correo electrónico"
+                                    className={inputClass(!!errorsSignup.email)}
+                                    {...registerSignup('email', {
+                                        required: 'El correo es requerido',
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: 'Correo electrónico inválido'
+                                        }
+                                    })}
+                                />
+                                <i className={`pi pi-envelope ${iconClass}`}></i>
+                            </div>
                             {errorsSignup.email && (
                                 <small className="text-red-500 block text-left mt-1 text-sm">{errorsSignup.email.message}</small>
                             )}
                         </div>
 
-                        <div className="relative my-4 max-[650px]:my-2">
+                        <div className="my-4 max-[650px]:my-2">
                             <Controller
                                 name="password"
                                 control={controlSignup}
                                 rules={{ required: 'La contraseña es requerida' }}
                                 render={({ field, fieldState }) => (
                                     <>
-                                        <Password
-                                            {...field}
-                                            placeholder="Contraseña"
-                                            toggleMask
-                                            feedback={false}
-                                            inputClassName={inputClass(!!fieldState.error)}
-                                        />
+                                        <div className="relative">
+                                            <Password
+                                                {...field}
+                                                placeholder="Contraseña"
+                                                toggleMask
+                                                feedback={false}
+                                                inputClassName={inputClass(!!fieldState.error)}
+                                            />
+                                        </div>
                                         {fieldState.error && (
                                             <small className="text-red-500 block text-left mt-1 text-sm">
                                                 {fieldState.error.message}

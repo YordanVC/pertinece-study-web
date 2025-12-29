@@ -2,10 +2,10 @@
 @import "primeicons/primeicons.css";
 
 @theme {
-  --font-family-sans: 'Poppins', sans-serif;
-  --color-ug-blue: #005da4;
-  --color-ug-blue-dark: #004a82;
-  --color-ug-gray: #f4f7f9;
+    --font-family-sans: 'Poppins', sans-serif;
+    --color-ug-blue: #005da4;
+    --color-ug-blue-dark: #004a82;
+    --color-ug-gray: #f4f7f9;
 }
 
 @source "../node_modules/primereact";
@@ -15,7 +15,7 @@
 :root {
     /* Colores primarios */
     --primary-color: var(--color-ug-blue);
-    
+
     /* Sidebar */
     --sidebar-bg: #ffffff;
     --sidebar-border: #e5e7eb;
@@ -23,12 +23,12 @@
     --sidebar-text-hover: var(--color-ug-blue);
     --sidebar-bg-hover: var(--color-ug-gray);
     --sidebar-logo-bg: transparent;
-    
+
     /* Header */
     --header-bg: #ffffff;
     --header-border: #e5e7eb;
     --header-text: var(--color-ug-blue);
-    
+
     /* Footer */
     --footer-bg: #ffffff;
     --footer-border: #e5e7eb;
@@ -37,11 +37,11 @@
     --footer-icon-text: var(--color-ug-blue);
     --footer-icon-bg-hover: var(--color-ug-blue);
     --footer-icon-text-hover: #ffffff;
-    
+
     /* Content */
     --content-bg: var(--color-ug-gray);
     --content-overlay: rgba(255, 255, 255, 0.4);
-    
+
     /* Botón activo */
     --btn-active-bg: var(--color-ug-blue);
     --btn-active-text: #ffffff;
@@ -56,12 +56,12 @@
     --sidebar-text-hover: #06b6d4;
     --sidebar-bg-hover: #374151;
     --sidebar-logo-bg: #ffffff;
-    
+
     /* Header */
     --header-bg: #1f2937;
     --header-border: #374151;
     --header-text: #06b6d4;
-    
+
     /* Footer */
     --footer-bg: #1f2937;
     --footer-border: #374151;
@@ -70,11 +70,11 @@
     --footer-icon-text: #06b6d4;
     --footer-icon-bg-hover: #06b6d4;
     --footer-icon-text-hover: #111827;
-    
+
     /* Content */
     --content-bg: #111827;
     --content-overlay: rgba(17, 24, 39, 0.7);
-    
+
     /* Botón activo */
     --btn-active-bg: var(--color-ug-blue);
     --btn-active-text: #ffffff;
@@ -106,7 +106,12 @@
 }
 
 /* Textos en modo oscuro */
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
     color: #f3f4f6 !important;
 }
 
@@ -201,28 +206,58 @@ body:has(.login-page) {
 }
 
 .p-password {
-  width: 100% !important;
-  display: block !important;
-  position: relative;
+    width: 100% !important;
+    display: block !important;
+    position: relative;
 }
 
 .p-password input,
 .p-inputtext {
-  transition: none !important;
+    transition: none !important;
 }
 
 .p-password .p-password-toggle-icon {
-  transition: none !important;
+    transition: none !important;
 }
+
+/* Alineación del icono del ojo con los demás iconos */
+.p-password .p-input-icon {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+}
+
+.p-password .p-input-icon svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    font-size: 1.25rem !important;
+    color: #333 !important;
+    fill: #333 !important;
+}
+
+/* Color del icono del ojo en modo oscuro */
+.dark .p-password .p-input-icon svg {
+    color: #d1d5db !important;
+    fill: #d1d5db !important;
+}
+
 
 /* Ocultar scrollbar pero mantener scroll funcional */
 .scrollbar-none {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE y Edge */
 }
 
 .scrollbar-none::-webkit-scrollbar {
-    display: none; /* Chrome, Safari y Opera */
+    display: none;
+    /* Chrome, Safari y Opera */
 }
 
 /* ==================== ESTILOS PARA QUILL EDITOR EN MODO OSCURO ==================== */
