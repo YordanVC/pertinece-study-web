@@ -95,7 +95,7 @@ const LoginPage = () => {
 
     return (
         <div
-            className={`min-h-screen w-full flex justify-center items-center p-5 fixed inset-0 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : ''}`}
+            className={`min-h-screen w-full flex justify-center items-center p-5 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : ''}`}
             style={{
                 backgroundImage: isDarkMode ? 'none' : `url(${bgImage})`,
                 backgroundSize: 'cover',
@@ -104,7 +104,7 @@ const LoginPage = () => {
             }}
         >
             {/* Toggle de tema en la esquina superior derecha */}
-            <div className="absolute top-4 right-4 z-50">
+            <div className="absolute top-4 right-4 max-[650px]:top-2 max-[650px]:right-2 z-50">
                 <Toggle
                     checked={isDarkMode}
                     onChange={toggleTheme}
@@ -120,8 +120,8 @@ const LoginPage = () => {
             {/*Container*/}
             <div
                 key={`login-container-${isDarkMode}`}
-                className={`relative w-[950px] h-[680px] rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full contain-layout
-                max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)] ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                className={`relative w-[950px] h-[750px] max-h-[90vh] rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden max-w-full contain-layout
+                max-[650px]:w-[min(92vw,500px)] max-[650px]:h-[min(90svh,700px)] mt-8 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
 
                 {/*------------------------FORM LOGIN-----------------------------------*/}
                 <div className={`absolute w-1/2 h-full right-0 flex items-center text-center p-8.75 transition-all duration-600 ease-in-out will-change-transform z-1
