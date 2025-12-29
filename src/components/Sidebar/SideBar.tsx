@@ -32,7 +32,6 @@ export const Sidebar = ({
     const handleLogout = () => {
         navigate('/login');
         toast.showInfo('Sesión cerrada', 'Has cerrado sesión correctamente.');
-        console.log('Logout clicked');
     }
 
     // Función para obtener ícono por defecto si no existe
@@ -76,7 +75,7 @@ export const Sidebar = ({
                 ${isCollapsed ? 'lg:w-20' : 'lg:w-70'}
                 ${isDarkMode ? 'bg-[#1e293b] border-r border-gray-600' : 'bg-white border-r border-gray-200'}
             `}
-                style={{ overflowY: 'auto', overflowX: 'hidden' }}
+                style={{ overflowY: 'visible', overflowX: 'hidden' }}
             >
 
                 <div className={` mt-2 h-16 flex justify-center items-center transition-all duration-300 mb-2 border-b ${isDarkMode ? 'border-gray-600' : 'border-gray-200'} ${isCollapsed ? 'lg:p-3' : 'p-0 lg:p-6'}`}>
@@ -113,7 +112,7 @@ export const Sidebar = ({
                         </>
                     )}
                 </div>
-                <nav className="mt-8 flex-1 px-4 space-y-3 overflow-y-auto">
+                <nav className="mt-8 flex-1 px-4 pt-2 space-y-3 overflow-y-auto">
                     {menuItems.map((item) => (
                         <div key={item.label} className="relative group/tooltip">
                             <Button

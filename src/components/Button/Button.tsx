@@ -78,7 +78,7 @@ export const Button = ({
             ${isCollapsed ? 'lg:justify-center lg:p-3' : 'p-3'}
             ${isDarkMode
                 ? 'text-gray-300 hover:bg-gray-700 hover:text-cyan-400 shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_4px_16px_rgba(6,182,212,0.2)]'
-                : 'text-gray-700 hover:bg-ug-gray hover:text-ug-blue shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,93,164,0.15)] active:shadow-[0_2px_6px_rgba(0,0,0,0.1)]'
+                : 'text-gray-700 hover:bg-ug-gray hover:text-ug-blue shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,93,164,0.5)] active:shadow-[0_2px_6px_rgba(0,0,0,0.1)]'
             }
         `,
         'sidebar-active': `
