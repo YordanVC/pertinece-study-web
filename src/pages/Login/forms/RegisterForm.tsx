@@ -14,6 +14,7 @@ export interface RegisterFormData {
     lastname: string;
     email: string;
     password: string;
+    confirmPassword: string;
 }
 
 interface RegisterFormProps {
@@ -141,6 +142,32 @@ export const RegisterForm = ({
                         )}
                     />
                 </div>
+                <div className="my-4 max-[650px]:my-2">
+                    <Controller
+                        name="confirmPassword"
+                        control={control}
+                        rules={{ required: 'La contraseña es requerida' }}
+                        render={({ field, fieldState }) => (
+                            <>
+                                <div className="relative">
+                                    <Password
+                                        {...field}
+                                        placeholder="Confirmar contraseña"
+                                        toggleMask
+                                        feedback={false}
+                                        inputClassName={inputClass(!!fieldState.error)}
+                                    />
+                                </div>
+                                {fieldState.error && (
+                                    <small className="text-red-500 block text-left mt-1 text-sm">
+                                        {fieldState.error.message}
+                                    </small>
+                                )}
+                            </>
+                        )}
+                    />
+                </div>
+
 
                 <CustomButton type="submit" variant="primary" className="!w-full !h-12 !rounded-lg !shadow-[0_0_10px_rgba(0,0,0,0.1)] max-[650px]:!bg-white max-[650px]:!text-ug-blue max-[650px]:!border-2 max-[650px]:!border-ug-blue max-[650px]:mb-4 max-[650px]:!h-14 max-[650px]:!text-base">
                     Registro

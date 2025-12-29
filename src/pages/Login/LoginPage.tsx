@@ -47,7 +47,8 @@ const LoginPage = () => {
             name: '',
             lastname: '',
             email: '',
-            password: ''
+            password: '',
+            confirmPassword: ''
         }
     });
 
