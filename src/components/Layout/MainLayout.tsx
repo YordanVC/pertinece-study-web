@@ -6,6 +6,7 @@ import bgImage from '../../assets/bg-3.jpg';
 import { Toggle } from '../Toggle/Toggle';
 import { IconButton } from '../IconButton/IconButton';
 import { HamburgerButton } from '../HamburgerButton/HamburgerButton';
+import { UserMenu } from '../UserMenu/UserMenu';
 import { useTheme } from '../../context/ThemeContext';
 import {
     MENSAJE_FOOTER,
@@ -46,19 +47,24 @@ export const MainLayout = () => {
                         {TITULO_HEADER}
                     </h1>
 
-                    {/* Toggle de modo oscuro/claro */}
-                    {!isMobileMenuOpen && (
-                        <Toggle
-                            checked={isDarkMode}
-                            onChange={toggleTheme}
-                            checkedIcon="pi-moon"
-                            uncheckedIcon="pi-sun"
-                            checkedBgColor="from-indigo-400 to-indigo-600"
-                            uncheckedBgColor="from-yellow-400 to-yellow-600"
-                            checkedIconColor="text-blue-800"
-                            uncheckedIconColor="text-green-800"
-                        />
-                    )}
+                    <div className="flex items-center gap-3">
+                        {/* Toggle de modo oscuro/claro */}
+                        {!isMobileMenuOpen && (
+                            <Toggle
+                                checked={isDarkMode}
+                                onChange={toggleTheme}
+                                checkedIcon="pi-moon"
+                                uncheckedIcon="pi-sun"
+                                checkedBgColor="from-indigo-400 to-indigo-600"
+                                uncheckedBgColor="from-yellow-400 to-yellow-600"
+                                checkedIconColor="text-blue-800"
+                                uncheckedIconColor="text-green-800"
+                            />
+                        )}
+
+                        {/* User Menu */}
+                        {!isMobileMenuOpen && <UserMenu isDarkMode={isDarkMode} />}
+                    </div>
 
                 </header>
                 <section

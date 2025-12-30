@@ -4,9 +4,7 @@ import type { SidebarProps } from '../../types/sidebar.types';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { Button } from '../Button/Button';
 import { Button as PrimeButton } from 'primereact/button';
-import { ConfirmDialog } from '../Modal/ConfirmDialog';
-import { useState } from 'react';
-import { useToast } from '../../context/ToastContext';
+import { useAuth } from '../../context/AuthContext';
 
 export const Sidebar = ({
     menuItems,
@@ -18,10 +16,9 @@ export const Sidebar = ({
     onToggleCollapse,
     isDarkMode = false
 }: SidebarProps) => {
-    const [confirmDialogVisible, setConfirmDialogVisible] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const toast = useToast();
+    const { requestLogout } = useAuth();
 
     const isActive = (path: string) => location.pathname === path;
 
@@ -29,10 +26,6 @@ export const Sidebar = ({
         navigate(path);
         onMobileMenuClose?.();
     };
-    const handleLogout = () => {
-        navigate('/login');
-        toast.showInfo('Sesión cerrada', 'Has cerrado sesión correctamente.');
-    }
 
     // Función para obtener ícono por defecto si no existe
     const getItemIcon = (icon?: string) => {
@@ -137,7 +130,7 @@ export const Sidebar = ({
                     <div className="relative group/tooltip">
                         <Button
                             variant="danger"
-                            onClick={() => setConfirmDialogVisible(true)}
+                            onClick={requestLogout}
                             icon="pi-sign-out"
                             isCollapsed={isCollapsed}
                             isDarkMode={isDarkMode}
@@ -147,14 +140,6 @@ export const Sidebar = ({
                         {isCollapsed && <Tooltip message="Cerrar Sesión" />}
                     </div>
                 </div>
-                <ConfirmDialog
-                    visible={confirmDialogVisible}
-                    variant='danger'
-                    onHide={() => setConfirmDialogVisible(false)}
-                    title="Confirmar cierre de sesión"
-                    message="¿Estás a punto de cerrar sesión?"
-                    onConfirm={handleLogout}
-                />
             </aside>
         </>
     );

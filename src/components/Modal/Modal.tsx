@@ -89,7 +89,7 @@ export const Modal = ({
 
     // Footer con botones de acción - responsive
     const footer = finalActions.length > 0 ? (
-        <div className={`flex flex-row justify-end gap-2 sm:gap-3 mt-3 ${footerClassName}`}>
+        <div className={`flex flex-row justify-end pl-2 gap-2 sm:gap-3 mt-3 ${footerClassName}`}>
             {finalActions.map((action, index) => (
                 <Button
                     key={index}

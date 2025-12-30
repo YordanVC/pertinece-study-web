@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { useToast } from '../../context/ToastContext';
+import { useAuth } from '../../context/AuthContext';
 import { Toggle } from '../../components/Toggle/Toggle';
 import { OverlayPanel } from './OverlayPanel';
 import { LoginForm, RegisterForm } from './forms';
@@ -19,8 +20,16 @@ import {
 const LoginPage = () => {
     const [isRegisterActive, setIsRegisterActive] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const toast = useToast();
     const { isDarkMode, toggleTheme } = useTheme();
+    const { login, register: authRegister, isAuthenticated } = useAuth();
+
+    // Redirigir si ya está autenticado
+    if (isAuthenticated) {
+        const from = (location.state as any)?.from?.pathname || '/';
+        navigate(from, { replace: true });
+    }
 
     // React Hook Forms para Login
     const {
@@ -53,15 +62,36 @@ const LoginPage = () => {
     });
 
     const onLogin = async (data: LoginFormData) => {
-        console.log('Login data:', data);
-        navigate('/');
-        toast.showSuccess('Sesión iniciada', 'Has iniciado sesión correctamente.');
-        setTimeout(() => toast.showError('Sesión iniciada', 'Has iniciado sesión correctamente.'), 3000);
-        setTimeout(() => toast.showWarn('Sesión iniciada', 'Has iniciado sesión correctamente.'), 4000);
+        try {
+            await login(data.username, data.password);
+            toast.showSuccess('Sesión iniciada', 'Has iniciado sesión correctamente.');
+
+            // Redirigir a la página que intentaba acceder o al home
+            const from = (location.state as any)?.from?.pathname || '/';
+            navigate(from, { replace: true });
+        } catch (error) {
+            toast.showError('Error de autenticación', 'Usuario o contraseña incorrectos.');
+            console.error('Login error:', error);
+        }
     };
 
     const onRegister = async (data: RegisterFormData) => {
-        console.log('Register data:', data);
+        try {
+            // Validar que las contraseñas coincidan
+            if (data.password !== data.confirmPassword) {
+                toast.showError('Error de validación', 'Las contraseñas no coinciden.');
+                return;
+            }
+
+            await authRegister(data.email, data.password, `${data.name} ${data.lastname}`);
+            toast.showSuccess('Registro exitoso', 'Tu cuenta ha sido creada correctamente.');
+
+            // Redirigir al home después del registro
+            navigate('/', { replace: true });
+        } catch (error) {
+            toast.showError('Error de registro', 'No se pudo crear la cuenta. Intenta nuevamente.');
+            console.error('Register error:', error);
+        }
     };
 
     // Estilos dinámicos para inputs según el tema
