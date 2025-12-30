@@ -55,9 +55,9 @@ export const UserMenu = ({ isDarkMode }: UserMenuProps) => {
                 {/* Avatar */}
                 <div className="relative w-9 h-9">
                     <img
-                        src={user.avatar || `https://ui-avatars.com/api/?name=${user.name}&background=0D8ABC`}
+                        src={user.avatar || `https://ui-avatars.com/api/?name=${user.name}&background=0D8ABC&color=fff`}
                         alt={user.name}
-                        className={`w-full h-full rounded-full border-3 object-cover ${isDarkMode ? 'border-white' : 'border-gray-300'
+                        className={`w-full h-full rounded-full border-3 object-cover ${isDarkMode ? 'border-white' : 'border-gray-200'
                             }`}
                     />
                     <div className={`hidden md:block absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 ${isDarkMode ? 'border-gray-800' : 'border-white'

@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 email: email,
                 name: email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1),
                 role: email.includes('admin') ? 'admin' : 'user',
-                avatar: `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=0D8ABC`
+                avatar: `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=0D8ABC&color=fff`
             };
 
             // Guardar en localStorage (mock de sesión)
@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 email: email,
                 name: name,
                 role: 'user',
-                avatar: `https://ui-avatars.com/api/?name=${name}&background=0D8ABC`
+                avatar: `https://ui-avatars.com/api/?name=${name}&background=0D8ABC&color=fff`
             };
 
             // Guardar en localStorage (mock de sesión)
